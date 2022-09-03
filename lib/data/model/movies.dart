@@ -1,21 +1,21 @@
-import 'package:f_movie_db/utils/models/dates.dart';
-import 'package:f_movie_db/utils/models/results.dart';
+import 'package:f_movie_db/data/model/dates.dart';
+import 'package:f_movie_db/data/model/results.dart';
 
-class NowPlaying {
+class Movies {
   Dates? dates;
   int? page;
   List<Results>? results;
   int? totalPages;
   int? totalResults;
 
-  NowPlaying(
+  Movies(
       {this.dates,
       this.page,
       this.results,
       this.totalPages,
       this.totalResults});
 
-  NowPlaying.fromJson(Map<String, dynamic> json) {
+  Movies.fromJson(Map<String, dynamic> json) {
     dates = json['dates'] != null ? Dates.fromJson(json['dates']) : null;
     page = json['page'];
     if (json['results'] != null) {
