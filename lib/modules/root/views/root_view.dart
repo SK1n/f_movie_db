@@ -1,4 +1,4 @@
-import 'package:f_movie_db/global_widgets/custom_app_bar.dart';
+import 'package:f_movie_db/widgets/custom_app_bar.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

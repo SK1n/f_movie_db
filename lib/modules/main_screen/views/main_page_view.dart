@@ -1,11 +1,10 @@
-import 'dart:math';
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:f_movie_db/core/utils/paddings.dart';
-import 'package:f_movie_db/data/model/results.dart';
-import 'package:f_movie_db/global_widgets/custom_app_bar.dart';
-import 'package:f_movie_db/global_widgets/futuristic.dart';
-import 'package:f_movie_db/modules/main_screen/controllers/now_playing_controller.dart';
-import 'package:f_movie_db/modules/main_screen/views/movie_item_view.dart';
+import 'package:f_movie_db/modules/main_screen/controllers/main_page_controller.dart';
+import 'package:f_movie_db/routes/app_routes.dart';
+import 'package:f_movie_db/widgets/custom_app_bar.dart';
+import 'package:f_movie_db/widgets/futuristic.dart';
+import 'package:f_movie_db/widgets/movies_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +13,7 @@ class MainPageUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final NowPlayingController nowPlayingController = Get.find();
+    MainPageController controller = Get.find();
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'Home',
@@ -24,107 +23,110 @@ class MainPageUi extends StatelessWidget {
           padding: const EdgeInsets.all(Paddings.allPaddings),
           child: Column(
             children: [
-              const Text('Now Playing'),
               Futuristic(
                 useQuery: false,
-                futureBuilder: () =>
-                    nowPlayingController.getDataNowPlayingMovies(),
+                futureBuilder: () => controller.getData(),
                 dataBuilder: (p0, p1) {
-                  return Row(
+                  return Column(
                     children: [
-                      SizedBox(
-                        height: 200,
-                        width: Get.width - Paddings.allPaddings * 2,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 20,
-                          itemBuilder: (context, index) {
-                            Results item = p1.data[index];
-                            int id = Random().nextInt(50000);
-                            return Hero(
-                              tag: 'poster${item.id}$id',
-                              child: SizedBox(
-                                width: 100,
-                                child: MovieItemView(
-                                  item: item,
-                                  id: id,
+                      InkWell(
+                        onTap: (() => Get.toNamed(Routes.nowPlaying)),
+                        child: Stack(
+                          alignment: Alignment.centerRight,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: Paddings.topPaddings,
+                                  bottom: Paddings.bottomPaddings),
+                              child: Card(
+                                child: Container(
+                                  width: Get.width,
+                                  margin: const EdgeInsets.all(
+                                      Paddings.allPaddings),
+                                  child: const AutoSizeText(
+                                    'NOW PLAYING MOVIES',
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               ),
-                            );
-                          },
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(
+                                  right: Paddings.rightPaddings),
+                              child: const Icon(Icons.arrow_forward_sharp),
+                            )
+                          ],
                         ),
                       ),
-                    ],
-                  );
-                },
-              ),
-              const Text('Popular'),
-              Futuristic(
-                useQuery: false,
-                futureBuilder: () =>
-                    nowPlayingController.getDataPopularMovies(),
-                dataBuilder: (p0, p1) {
-                  return Row(
-                    children: [
-                      SizedBox(
-                        height: 200,
-                        width: Get.width - Paddings.allPaddings * 2,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 20,
-                          itemBuilder: (context, index) {
-                            Results item = p1.data[index];
-                            int id = Random().nextInt(50000);
-                            return Hero(
-                              tag: 'poster${item.id}$id',
-                              child: SizedBox(
-                                width: 100,
-                                child: MovieItemView(
-                                  item: item,
-                                  id: id,
+                      MoviesListView(
+                        list: controller.nowPlaying,
+                        title: 'NOW PLAYING MOVIES',
+                      ),
+                      InkWell(
+                        onTap: (() => Get.toNamed(Routes.moviesUpcoming)),
+                        child: Stack(
+                          alignment: Alignment.centerRight,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: Paddings.topPaddings,
+                                  bottom: Paddings.bottomPaddings),
+                              child: Card(
+                                child: Container(
+                                  width: Get.width,
+                                  margin: const EdgeInsets.all(
+                                      Paddings.allPaddings),
+                                  child: const AutoSizeText(
+                                    'UPCOMING MOVIES',
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               ),
-                            );
-                          },
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(
+                                  right: Paddings.rightPaddings),
+                              child: const Icon(Icons.arrow_forward_sharp),
+                            )
+                          ],
                         ),
                       ),
-                    ],
-                  );
-                },
-              ),
-              const Text('Upcoming'),
-              Futuristic(
-                useQuery: false,
-                futureBuilder: () =>
-                    nowPlayingController.getDataUpcomingMovies(),
-                dataBuilder: (p0, p1) {
-                  return Row(
-                    children: [
-                      SizedBox(
-                        height: 200,
-                        width: Get.width - Paddings.allPaddings * 2,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 20,
-                          itemBuilder: (context, index) {
-                            Results item = p1.data[index];
-                            int id = Random().nextInt(50000);
-                            debugPrint(item.id.toString());
-                            return Hero(
-                              tag: 'poster${item.id}$id',
-                              child: SizedBox(
-                                width: 100,
-                                child: MovieItemView(
-                                  item: item,
-                                  id: id,
+                      MoviesListView(
+                        list: controller.upcoming,
+                        title: 'UPCOMING MOVIES',
+                      ),
+                      InkWell(
+                        onTap: (() => Get.toNamed(Routes.moviesPopular)),
+                        child: Stack(
+                          alignment: Alignment.centerRight,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: Paddings.topPaddings,
+                                  bottom: Paddings.bottomPaddings),
+                              child: Card(
+                                child: Container(
+                                  width: Get.width,
+                                  margin: const EdgeInsets.all(
+                                      Paddings.allPaddings),
+                                  child: const AutoSizeText(
+                                    'POPULAR MOVIES',
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               ),
-                            );
-                          },
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(
+                                  right: Paddings.rightPaddings),
+                              child: const Icon(Icons.arrow_forward_sharp),
+                            )
+                          ],
                         ),
+                      ),
+                      MoviesListView(
+                        list: controller.popular,
+                        title: 'POPULAR MOVIES',
                       ),
                     ],
                   );

@@ -1,7 +1,13 @@
-import 'package:f_movie_db/modules/main_screen/bindings/now_playing_bindings.dart';
+import 'package:f_movie_db/modules/main_screen/bindings/main_page_bindings.dart';
 import 'package:f_movie_db/modules/main_screen/views/main_page_view.dart';
+import 'package:f_movie_db/modules/movie/bindings/person_item_bindings.dart';
 import 'package:f_movie_db/modules/movie/views/movie_item_page_view.dart';
-import 'package:f_movie_db/modules/now_playing.dart/views/now_playing_view.dart';
+import 'package:f_movie_db/modules/movies_now_playing/bindings/movies_now_playing_bindings.dart';
+import 'package:f_movie_db/modules/movies_now_playing/views/movies_now_playing_view.dart';
+import 'package:f_movie_db/modules/movies_popular/bindings/movies_popular_bindings.dart';
+import 'package:f_movie_db/modules/movies_popular/views/movies_popular_view.dart';
+import 'package:f_movie_db/modules/movies_upcoming/bindings/movies_upcoming_bindings.dart';
+import 'package:f_movie_db/modules/movies_upcoming/views/movies_upcoming_view.dart';
 import 'package:f_movie_db/modules/root/views/root_view.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:get/get.dart';
@@ -13,13 +19,40 @@ abstract class AppPages {
   static const INITIAL = Routes.home;
 
   static final pages = [
-    GetPage(name: '/', page: () => const RootView(), children: [
-      GetPage(name: Routes.home, page: () => const MainPageUi(), bindings: [
-        NowPlayingBinding()
-      ], children: [
-        GetPage(name: Routes.nowPlaying, page: () => const NowPlayingView()),
-      ]),
-      GetPage(name: Routes.moviePage, page: () => const MovieItemPageView()),
-    ])
+    GetPage(
+      name: '/',
+      page: () => const RootView(),
+      children: [
+        GetPage(
+          name: Routes.home,
+          page: () => const MainPageUi(),
+          bindings: [
+            MainPageBinding(),
+          ],
+        ),
+        GetPage(
+          name: Routes.moviePage,
+          page: () => const MovieItemPageView(),
+          bindings: [
+            PersonItemBinding(),
+          ],
+        ),
+        GetPage(
+          name: Routes.nowPlaying,
+          page: () => const MoviesNowPlayingView(),
+          binding: MoviesNowPlayingBinding(),
+        ),
+        GetPage(
+          name: Routes.moviesPopular,
+          page: () => const MoviesPopularView(),
+          binding: MoviesPopularBinding(),
+        ),
+        GetPage(
+          name: Routes.moviesUpcoming,
+          page: () => const MoviesUpcomingView(),
+          binding: MoviesUpcomingBinding(),
+        ),
+      ],
+    )
   ];
 }

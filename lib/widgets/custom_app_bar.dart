@@ -10,6 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      actions: const [Icon(Icons.search)],
       title: AutoSizeText(
         title,
         maxLines: 2,

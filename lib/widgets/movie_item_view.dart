@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/data/model/results.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,25 +22,26 @@ class MovieItemView extends StatelessWidget {
           alignment: AlignmentDirectional.bottomCenter,
           children: [
             OctoImage(
-              image: CachedNetworkImageProvider(
-                  'https://image.tmdb.org/t/p/w500/${item.posterPath}'),
+              image:
+                  CachedNetworkImageProvider('$baseImageUrl${item.posterPath}'),
               placeholderBuilder: OctoPlaceholder.blurHash(
                 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
               ),
-              width: 100,
-              height: 192,
+              height: 200,
+              width: Get.width / 2,
               errorBuilder: OctoError.icon(color: Colors.red),
               fit: BoxFit.cover,
             ),
             Container(
-              width: 100,
-              height: 50,
               color: Colors.black87,
+              width: Get.width / 2,
+              height: 50,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: AutoSizeText(
                   '${item.title}',
                   maxLines: 2,
+                  minFontSize: 8,
                   textAlign: TextAlign.center,
                 ),
               ),
