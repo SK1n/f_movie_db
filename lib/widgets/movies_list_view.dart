@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:f_movie_db/core/utils/paddings.dart';
 import 'package:f_movie_db/data/model/results.dart';
 import 'package:f_movie_db/widgets/movie_item_view.dart';

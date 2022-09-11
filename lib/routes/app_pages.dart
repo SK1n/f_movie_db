@@ -10,6 +10,7 @@ import 'package:f_movie_db/modules/movies_upcoming/bindings/movies_upcoming_bind
 import 'package:f_movie_db/modules/movies_upcoming/views/movies_upcoming_view.dart';
 import 'package:f_movie_db/modules/root/views/root_view.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
+import 'package:f_movie_db/widgets/bottom_navigation_bar/bindings/bottom_navigation_bar_bindings.dart';
 import 'package:get/get.dart';
 
 abstract class AppPages {
@@ -28,6 +29,7 @@ abstract class AppPages {
           page: () => const MainPageUi(),
           bindings: [
             MainPageBinding(),
+            BottomNavigationBarBinding(),
           ],
         ),
         GetPage(
