@@ -1,8 +1,8 @@
 import 'package:f_movie_db/core/utils/paddings.dart';
-import 'package:f_movie_db/modules/main_screen/controllers/main_page_controller.dart';
+import 'package:f_movie_db/modules/main_screen/controllers/movies_controller.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:f_movie_db/widgets/futuristic.dart';
-import 'package:f_movie_db/widgets/movie_title_section.dart';
+import 'package:f_movie_db/widgets/carousell_title.dart';
 import 'package:f_movie_db/widgets/movies_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -14,7 +14,7 @@ class MoviesPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MainPageController controller = Get.find();
+    MoviesController controller = Get.find();
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(Paddings.allPaddings),
@@ -28,7 +28,7 @@ class MoviesPageView extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: (() => Get.toNamed(Routes.nowPlaying)),
-                      child: const MovieTitleSection(
+                      child: const CarousellTitle(
                         title: 'NOW PLAYING MOVIES',
                       ),
                     ),
@@ -38,7 +38,7 @@ class MoviesPageView extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: (() => Get.toNamed(Routes.moviesUpcoming)),
-                      child: const MovieTitleSection(
+                      child: const CarousellTitle(
                         title: 'UPCOMING MOVIES',
                       ),
                     ),
@@ -48,7 +48,7 @@ class MoviesPageView extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: (() => Get.toNamed(Routes.moviesPopular)),
-                      child: const MovieTitleSection(
+                      child: const CarousellTitle(
                         title: 'POPULAR MOVIES',
                       ),
                     ),

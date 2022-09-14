@@ -2,12 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/utils/end_points.dart';
 import 'package:f_movie_db/data/model/cast.dart';
 import 'package:f_movie_db/data/model/crew.dart';
-import 'package:f_movie_db/data/services/cast.dart';
-import 'package:f_movie_db/data/services/crew.dart';
+import 'package:f_movie_db/data/services/cast_client.dart';
+import 'package:f_movie_db/data/services/crew_client.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PersonItemController extends GetxController {
+class MoviePersonItemController extends GetxController {
   final _crew = <Crew>[].obs;
   get crew => _crew;
   set crew(value) => _crew.value = value;

@@ -5,7 +5,7 @@ class Crew {
   String? knownForDepartment;
   String? name;
   String? originalName;
-  double? popularity;
+  num? popularity;
   String? profilePath;
   String? creditId;
   String? department;

@@ -23,7 +23,7 @@ class CastItemView extends StatelessWidget {
                   image: CachedNetworkImageProvider(
                       '$baseImageUrl${item.profilePath}'),
                   placeholderBuilder: OctoPlaceholder.blurHash(
-                    'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+                    blurHash,
                   ),
                   width: 100,
                   height: 192,

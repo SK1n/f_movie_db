@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
       initialRoute: AppPages.INITIAL,
       navigatorKey: Get.key,
       builder: EasyLoading.init(),
+      themeMode: ThemeMode.dark,
       theme: FlexThemeData.light(
         scheme: FlexScheme.outerSpace,
         surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,

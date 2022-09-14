@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/utils/base_url.dart';
-import 'package:f_movie_db/data/model/results.dart';
+import 'package:f_movie_db/data/model/movies_results.dart';
 import 'package:f_movie_db/globals/api_secrets.dart';
 
 class MoviesClient {
@@ -25,8 +25,9 @@ class MoviesClient {
 
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse = response.data;
-        List<Results> listMovies = jsonResponse['results'].map<Results>((map) {
-          return Results.fromJson(map);
+        List<MoviesResults> listMovies =
+            jsonResponse['results'].map<MoviesResults>((map) {
+          return MoviesResults.fromJson(map);
         }).toList();
         return listMovies;
       }

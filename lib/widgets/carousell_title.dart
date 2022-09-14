@@ -3,9 +3,9 @@ import 'package:f_movie_db/core/utils/paddings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MovieTitleSection extends StatelessWidget {
+class CarousellTitle extends StatelessWidget {
   final String title;
-  const MovieTitleSection({super.key, required this.title});
+  const CarousellTitle({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +19,8 @@ class MovieTitleSection extends StatelessWidget {
             child: Container(
               width: Get.width,
               margin: const EdgeInsets.all(Paddings.allPaddings),
-              child: const AutoSizeText(
-                'POPULAR MOVIES',
+              child: AutoSizeText(
+                title,
                 textAlign: TextAlign.center,
               ),
             ),

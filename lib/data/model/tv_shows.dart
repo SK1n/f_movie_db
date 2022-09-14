@@ -1,27 +1,19 @@
-import 'package:f_movie_db/data/model/dates.dart';
-import 'package:f_movie_db/data/model/movies_results.dart';
+import 'package:f_movie_db/data/model/tv_shows_results.dart';
 
-class Movies {
-  Dates? dates;
+class TvShows {
   int? page;
-  List<MoviesResults>? results;
+  List<TvShowsResults>? results;
   int? totalPages;
   int? totalResults;
 
-  Movies(
-      {this.dates,
-      this.page,
-      this.results,
-      this.totalPages,
-      this.totalResults});
+  TvShows({this.page, this.results, this.totalPages, this.totalResults});
 
-  Movies.fromJson(Map<String, dynamic> json) {
-    dates = json['dates'] != null ? Dates.fromJson(json['dates']) : null;
+  TvShows.fromJson(Map<String, dynamic> json) {
     page = json['page'];
     if (json['results'] != null) {
-      results = <MoviesResults>[];
+      results = <TvShowsResults>[];
       json['results'].forEach((v) {
-        results!.add(MoviesResults.fromJson(v));
+        results!.add(TvShowsResults.fromJson(v));
       });
     }
     totalPages = json['total_pages'];
@@ -30,9 +22,6 @@ class Movies {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    if (dates != null) {
-      data['dates'] = dates!.toJson();
-    }
     data['page'] = page;
     if (results != null) {
       data['results'] = results!.map((v) => v.toJson()).toList();

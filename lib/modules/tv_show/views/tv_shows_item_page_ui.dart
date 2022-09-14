@@ -1,35 +1,54 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:f_movie_db/core/const.dart';
+import 'package:f_movie_db/core/utils/end_points.dart';
 import 'package:f_movie_db/core/utils/paddings.dart';
 import 'package:f_movie_db/data/model/cast.dart';
 import 'package:f_movie_db/data/model/crew.dart';
-import 'package:f_movie_db/data/model/movies_results.dart';
+import 'package:f_movie_db/data/model/tv_shows_results.dart';
+import 'package:f_movie_db/modules/tv_show/controllers/tv_shows_person_item_controller.dart';
 import 'package:f_movie_db/widgets/custom_app_bar.dart';
 import 'package:f_movie_db/widgets/futuristic.dart';
-import 'package:f_movie_db/modules/movie/controllers/movie_person_item_controller.dart';
 import 'package:f_movie_db/widgets/cast_item_view.dart';
 import 'package:f_movie_db/widgets/crew_item_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:octo_image/octo_image.dart';
+import 'package:video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class MovieItemPageView extends StatelessWidget {
-  const MovieItemPageView({super.key});
+class TvShowsItemPageUI extends StatelessWidget {
+  const TvShowsItemPageUI({super.key});
   @override
   Widget build(BuildContext context) {
-    MoviesResults item = Get.arguments[0];
+    TvShowsResults item = Get.arguments[0];
     int id = Get.arguments[1];
-    final MoviePersonItemController controller = Get.find();
+    final TvShowsPersonItemController controller = Get.find();
+    EndPoints endPoints = EndPoints(id: item.id);
     return Scaffold(
       appBar: CustomAppBar(
-        title: '${item.title}',
+        title: '${item.name}',
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(Paddings.allPaddings),
           child: Column(
             children: [
+              Futuristic(
+                useQuery: false,
+                futureBuilder: () =>
+                    controller.getVideo(endPoints.tvShowsVideo),
+                dataBuilder: ((p0, p1) {
+                  return YoutubePlayerBuilder(
+                    player: YoutubePlayer(
+                        width: Get.width - 20,
+                        controller: controller.videoPlayerController!),
+                    builder: ((p0, p1) {
+                      return p1;
+                    }),
+                  );
+                }),
+              ),
               Hero(
                 tag: 'poster${item.id}$id',
                 child: Card(
@@ -55,7 +74,7 @@ class MovieItemPageView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                       child: AutoSizeText(
-                        'Release date: ${item.releaseDate}',
+                        'Release date: ${item.firstAirDate}',
                       ),
                     ),
                     Futuristic(

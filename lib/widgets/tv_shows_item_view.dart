@@ -1,29 +1,30 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:f_movie_db/core/const.dart';
-import 'package:f_movie_db/data/model/movies_results.dart';
+import 'package:f_movie_db/data/model/tv_shows_results.dart';
+import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:octo_image/octo_image.dart';
 
-class MovieItemView extends StatelessWidget {
-  final MoviesResults item;
+class TvShowsItemView extends StatelessWidget {
+  final TvShowsResults item;
   final int id;
-  const MovieItemView({super.key, required this.item, required this.id});
+  const TvShowsItemView({super.key, required this.item, required this.id});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (() {
-        Get.toNamed('movie', arguments: [item, id]);
+        Get.toNamed(Routes.tvShowsPage, arguments: [item, id]);
       }),
       child: Card(
         child: Stack(
           alignment: AlignmentDirectional.bottomCenter,
           children: [
             OctoImage(
-              image:
-                  CachedNetworkImageProvider('$baseImageUrl${item.posterPath}'),
+              image: CachedNetworkImageProvider(
+                  '$baseImageUrl${item.backdropPath}'),
               placeholderBuilder: OctoPlaceholder.blurHash(
                 blurHash,
               ),
@@ -39,7 +40,7 @@ class MovieItemView extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: AutoSizeText(
-                  '${item.title}',
+                  '${item.name}',
                   maxLines: 2,
                   minFontSize: 8,
                   textAlign: TextAlign.center,

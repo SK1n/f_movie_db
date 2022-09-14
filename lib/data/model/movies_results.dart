@@ -1,4 +1,4 @@
-class Results {
+class MoviesResults {
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
@@ -6,15 +6,15 @@ class Results {
   String? originalLanguage;
   String? originalTitle;
   String? overview;
-  double? popularity;
+  num? popularity;
   String? posterPath;
   String? releaseDate;
   String? title;
   bool? video;
   num? voteAverage;
-  int? voteCount;
+  num? voteCount;
 
-  Results(
+  MoviesResults(
       {this.adult,
       this.backdropPath,
       this.genreIds,
@@ -30,7 +30,7 @@ class Results {
       this.voteAverage,
       this.voteCount});
 
-  Results.fromJson(Map<String, dynamic> json) {
+  MoviesResults.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'].cast<int>();

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/utils/base_url.dart';
 import 'package:f_movie_db/data/model/crew.dart';
-import 'package:f_movie_db/data/model/results.dart';
+import 'package:f_movie_db/data/model/movies_results.dart';
 import 'package:f_movie_db/globals/api_secrets.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +11,7 @@ class CrewClient {
   CrewClient({required this.httpClient, required this.endPoint});
 
   getAll() async {
+    debugPrint('URL: $baseURL$endPoint?api_key=$apiKey');
     try {
       var response = await httpClient.get(
         baseURL + endPoint,
