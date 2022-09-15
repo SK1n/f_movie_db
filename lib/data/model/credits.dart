@@ -1,14 +1,14 @@
 import 'package:f_movie_db/data/model/cast.dart';
 import 'package:f_movie_db/data/model/crew.dart';
 
-class Person {
+class Credits {
   int? id;
   List<Cast>? cast;
   List<Crew>? crew;
 
-  Person({this.id, this.cast, this.crew});
+  Credits({this.id, this.cast, this.crew});
 
-  Person.fromJson(Map<String, dynamic> json) {
+  Credits.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     if (json['cast'] != null) {
       cast = <Cast>[];

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/utils/base_url.dart';
 import 'package:f_movie_db/data/model/crew.dart';
@@ -21,12 +23,9 @@ class CrewClient {
       );
 
       if (response.statusCode == 200) {
-        Map<String, dynamic> jsonResponse = response.data;
-        List<Crew> listMovies = jsonResponse['crew'].map<Crew>((map) {
-          return Crew.fromJson(map);
-        }).toList();
+        Map<String, dynamic> jsonResponse = json.decode(response.data);
 
-        return listMovies;
+        return jsonResponse;
       }
     } catch (e) {}
   }

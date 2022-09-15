@@ -92,14 +92,14 @@ class _FuturisticState<T> extends State<Futuristic<T>> {
           'assets/images/system.png',
           width: Get.width / 3,
         ),
-        Text(
+        const Text(
             'A intervenit o eroare\n Va rugam sa reveniti mai tarziu sau sa reincercati!'),
         TextButton(
           style: TextButton.styleFrom(
             backgroundColor: Colors.pink,
           ),
           onPressed: () => _execute(),
-          child: Text(
+          child: const Text(
             'Incercati din nou!',
             style: TextStyle(color: Colors.white),
           ),

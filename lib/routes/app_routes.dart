@@ -5,6 +5,7 @@ abstract class Routes {
   static const moviesUpcoming = home + _Paths.moviesUpcoming;
   static const moviePage = _Paths.moviePage;
   static const tvShowsPage = _Paths.tvShowsPage;
+  static const credits = _Paths.credits;
 }
 
 abstract class _Paths {
@@ -14,4 +15,5 @@ abstract class _Paths {
   static const moviesPopular = '/popular';
   static const moviesUpcoming = '/upcoming';
   static const tvShowsPage = '/tvshows';
+  static const credits = '/credits';
 }

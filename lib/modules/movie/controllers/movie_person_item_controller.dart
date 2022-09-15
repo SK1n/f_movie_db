@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/utils/end_points.dart';
 import 'package:f_movie_db/data/model/cast.dart';
 import 'package:f_movie_db/data/model/crew.dart';
-import 'package:f_movie_db/data/services/cast_client.dart';
+import 'package:f_movie_db/data/services/cast_crew_client.dart';
 import 'package:f_movie_db/data/services/crew_client.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,13 +21,13 @@ class MoviePersonItemController extends GetxController {
       httpClient: dio,
       endPoint: EndPoints(id: movieId).moviesCredits,
     );
-    var tempCast = CastClient(
-      httpClient: dio,
-      endPoint: EndPoints(id: movieId).moviesCredits,
-    );
+    // var tempCast = CastClient(
+    //   httpClient: dio,
+    //   endPoint: EndPoints(id: movieId).moviesCredits,
+    // );
 
     crew.addAll(await tempCrew.getAll());
-    cast.addAll(await tempCast.getAll());
+    //cast.addAll(await tempCast.getAll());
   }
 
   int get lengthCrew => crew.length;

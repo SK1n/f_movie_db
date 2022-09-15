@@ -1,3 +1,5 @@
+import 'package:f_movie_db/modules/credits/bindings/credits_bindings.dart';
+import 'package:f_movie_db/modules/credits/views/credits_view.dart';
 import 'package:f_movie_db/modules/main_screen/bindings/movies_bindings.dart';
 import 'package:f_movie_db/modules/main_screen/bindings/tv_shows_bindings.dart';
 import 'package:f_movie_db/modules/main_screen/views/main_page_view.dart';
@@ -62,7 +64,11 @@ abstract class AppPages {
           name: Routes.tvShowsPage,
           page: () => const TvShowsItemPageUI(),
           binding: TvShowsPersonItemBinding(),
-        )
+        ),
+        GetPage(
+            name: Routes.credits,
+            page: () => const CreditsView(),
+            binding: CreditsBinding()),
       ],
     )
   ];
