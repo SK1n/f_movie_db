@@ -11,7 +11,7 @@ class PersonDetails {
   String? knownForDepartment;
   String? name;
   String? placeOfBirth;
-  double? popularity;
+  num? popularity;
   String? profilePath;
 
   PersonDetails(
