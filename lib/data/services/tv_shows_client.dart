@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/data/model/tv_shows_results.dart';
-import 'package:f_movie_db/globals/api_secrets.dart';
+import 'package:f_movie_db/core/utils/api_key.dart';
 import 'package:flutter/material.dart';
 
 class TvShowsClient {

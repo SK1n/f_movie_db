@@ -45,3 +45,4 @@ app.*.map.json
 
 
 lib/globals/api_secrets.dart
+lib/core/utils/api_key.dart

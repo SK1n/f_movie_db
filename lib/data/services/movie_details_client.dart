@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/core/utils/end_points.dart';
 import 'package:f_movie_db/data/model/movie_details/movie_details.dart';
-import 'package:f_movie_db/globals/api_secrets.dart';
+import 'package:f_movie_db/core/utils/api_key.dart';
 import 'package:flutter/material.dart';
 
 class MovieDetailsClient {
