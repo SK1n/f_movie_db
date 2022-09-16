@@ -9,14 +9,15 @@ import 'package:octo_image/octo_image.dart';
 
 class TvShowsItemView extends StatelessWidget {
   final TvShowsResults item;
-  final int id;
-  const TvShowsItemView({super.key, required this.item, required this.id});
+  final String posterId;
+  const TvShowsItemView(
+      {super.key, required this.item, required this.posterId});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (() {
-        Get.toNamed(Routes.tvShowsPage, arguments: [item, id]);
+        Get.toNamed(Routes.tvShowsPage, arguments: [item.id, posterId]);
       }),
       child: Card(
         child: Stack(

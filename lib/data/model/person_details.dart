@@ -3,7 +3,7 @@ class PersonDetails {
   List<String>? alsoKnownAs;
   String? biography;
   String? birthday;
-  Null? deathday;
+  String? deathday;
   int? gender;
   String? homepage;
   int? id;
@@ -48,21 +48,21 @@ class PersonDetails {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['adult'] = this.adult;
-    data['also_known_as'] = this.alsoKnownAs;
-    data['biography'] = this.biography;
-    data['birthday'] = this.birthday;
-    data['deathday'] = this.deathday;
-    data['gender'] = this.gender;
-    data['homepage'] = this.homepage;
-    data['id'] = this.id;
-    data['imdb_id'] = this.imdbId;
-    data['known_for_department'] = this.knownForDepartment;
-    data['name'] = this.name;
-    data['place_of_birth'] = this.placeOfBirth;
-    data['popularity'] = this.popularity;
-    data['profile_path'] = this.profilePath;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['adult'] = adult;
+    data['also_known_as'] = alsoKnownAs;
+    data['biography'] = biography;
+    data['birthday'] = birthday;
+    data['deathday'] = deathday;
+    data['gender'] = gender;
+    data['homepage'] = homepage;
+    data['id'] = id;
+    data['imdb_id'] = imdbId;
+    data['known_for_department'] = knownForDepartment;
+    data['name'] = name;
+    data['place_of_birth'] = placeOfBirth;
+    data['popularity'] = popularity;
+    data['profile_path'] = profilePath;
     return data;
   }
 }

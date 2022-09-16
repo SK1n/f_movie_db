@@ -1,15 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:f_movie_db/core/const.dart';
-import 'package:f_movie_db/core/utils/paddings.dart';
-import 'package:f_movie_db/data/model/cast.dart';
-import 'package:f_movie_db/data/model/crew.dart';
+import 'package:f_movie_db/data/model/movie_credits/movie_credits_crew.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:octo_image/octo_image.dart';
 
 class CrewItemView extends StatelessWidget {
-  final Crew item;
+  final MovieCreditsCrew item;
   const CrewItemView({super.key, required this.item});
 
   @override

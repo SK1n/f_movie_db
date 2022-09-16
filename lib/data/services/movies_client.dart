@@ -1,22 +1,23 @@
 import 'package:dio/dio.dart';
-import 'package:f_movie_db/core/utils/base_url.dart';
+import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/data/model/movies_results.dart';
 import 'package:f_movie_db/globals/api_secrets.dart';
+import 'package:flutter/material.dart';
 
 class MoviesClient {
   final Dio httpClient;
-  final String endPoint;
+  String? endPoint;
   final int page;
   MoviesClient({
     required this.httpClient,
-    required this.endPoint,
+    this.endPoint,
     this.page = 1,
   });
 
-  getAll() async {
+  Future getData() async {
     try {
       var response = await httpClient.get(
-        baseURL + endPoint,
+        baseURL + endPoint!,
         queryParameters: {
           'api_key': apiKey,
           'page': page,
@@ -31,6 +32,8 @@ class MoviesClient {
         }).toList();
         return listMovies;
       }
-    } catch (e) {}
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 }

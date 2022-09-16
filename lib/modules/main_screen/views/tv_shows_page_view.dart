@@ -1,15 +1,10 @@
 import 'package:f_movie_db/core/utils/paddings.dart';
 import 'package:f_movie_db/modules/main_screen/controllers/tv_shows_controller.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
-import 'package:f_movie_db/widgets/bottom_navigation_bar/views/bottom_navigation_bar_view.dart';
-import 'package:f_movie_db/widgets/custom_app_bar.dart';
 import 'package:f_movie_db/widgets/futuristic.dart';
 import 'package:f_movie_db/widgets/carousell_title.dart';
-import 'package:f_movie_db/widgets/movies_list_view.dart';
 import 'package:f_movie_db/widgets/tv_shows_list_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class TvShowsPageView extends StatelessWidget {
@@ -24,7 +19,6 @@ class TvShowsPageView extends StatelessWidget {
         child: Column(
           children: [
             Futuristic(
-              useQuery: false,
               futureBuilder: () => controller.getData(),
               dataBuilder: (p0, p1) {
                 return Column(

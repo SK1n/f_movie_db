@@ -27,26 +27,21 @@ class Futuristic<T> extends StatefulWidget {
   /// Call [VoidCallback] to start executing the [Future] again.
   final Function(Object, VoidCallback)? onError;
 
-  final String? query;
-  final bool useQuery;
-
   const Futuristic(
       {Key? key,
       required this.futureBuilder,
       this.autoStart = true,
       this.dataBuilder,
       this.onData,
-      this.query,
       this.busyBuilder,
-      this.useQuery = true,
       this.onError})
       : super(key: key);
 
   @override
-  _FuturisticState<T> createState() => _FuturisticState<T>();
+  FuturisticState<T> createState() => FuturisticState<T>();
 }
 
-class _FuturisticState<T> extends State<Futuristic<T>> {
+class FuturisticState<T> extends State<Futuristic<T>> {
   Future<T>? _future;
 
   @override
@@ -59,13 +54,13 @@ class _FuturisticState<T> extends State<Futuristic<T>> {
   Widget build(BuildContext context) {
     return FutureBuilder<T>(
       future: _future,
-      builder: (_context, snapshot) {
+      builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
           case ConnectionState.active:
-            return _handleBusy(_context);
+            return _handleBusy(context);
           case ConnectionState.done:
-            return _handleSnapshot(_context, snapshot);
+            return _handleSnapshot(context, snapshot);
           default:
             return _defaultWidget();
         }
@@ -110,11 +105,6 @@ class _FuturisticState<T> extends State<Futuristic<T>> {
 
   Widget _handleData(BuildContext context, AsyncSnapshot snap) {
     EasyLoading.dismiss();
-    if (widget.useQuery) {
-      return snap.data[widget.query].isEmpty
-          ? _handleEmpty()
-          : widget.dataBuilder!(context, snap);
-    }
     return widget.dataBuilder!(context, snap);
   }
 
@@ -128,38 +118,6 @@ class _FuturisticState<T> extends State<Futuristic<T>> {
     } else {
       return Container();
     }
-  }
-
-  Widget _handleEmpty() {
-    if (EasyLoading.isShow) {
-      EasyLoading.dismiss();
-    }
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(
-          'assets/images/no-results.png',
-          width: Get.width / 3,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'Nu am gasit nimic de afisat\n Va rugam sa reveniti mai tarziu sau sa reincercati',
-            textAlign: TextAlign.center,
-          ),
-        ),
-        TextButton(
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.pink,
-          ),
-          onPressed: () => _execute(),
-          child: Text(
-            'Incercati din nou!',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-      ],
-    );
   }
 
   void _execute() {

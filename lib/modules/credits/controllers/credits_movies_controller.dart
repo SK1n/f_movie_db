@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:f_movie_db/data/model/credits_movies_cast.dart';
 import 'package:f_movie_db/data/model/credits_movies_crew.dart';
-import 'package:f_movie_db/data/services/credits_movies_client.dart';
+import 'package:f_movie_db/data/services/movie_credits_client.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +16,7 @@ class CreditsMoviesController extends GetxController {
 
   Future getMoviesCreditsData(creditId) async {
     var dio = Dio();
-    var client = CreditsMoviesClient(httpClient: dio, id: creditId);
+    var client = MovieCreditsClient(httpClient: dio, id: creditId);
     var data = await client.getData();
     try {
       crew = data['crew'].map<CreditsMoviesCrew>((map) {
@@ -30,3 +30,4 @@ class CreditsMoviesController extends GetxController {
     }
   }
 }
+//TODO: update!

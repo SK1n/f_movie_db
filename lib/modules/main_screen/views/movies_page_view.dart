@@ -3,10 +3,8 @@ import 'package:f_movie_db/modules/main_screen/controllers/movies_controller.dar
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:f_movie_db/widgets/futuristic.dart';
 import 'package:f_movie_db/widgets/carousell_title.dart';
-import 'package:f_movie_db/widgets/movies_list_view.dart';
+import 'package:f_movie_db/widgets/movie_list_item_view.dart/views/movies_list_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class MoviesPageView extends StatelessWidget {
@@ -21,9 +19,8 @@ class MoviesPageView extends StatelessWidget {
         child: Column(
           children: [
             Futuristic(
-              useQuery: false,
-              futureBuilder: () => controller.getData(),
-              dataBuilder: (p0, p1) {
+              futureBuilder: () => controller.getNowPlayingData(),
+              dataBuilder: (context, snapshot) {
                 return Column(
                   children: [
                     InkWell(
@@ -33,9 +30,18 @@ class MoviesPageView extends StatelessWidget {
                       ),
                     ),
                     MoviesListView(
-                      list: controller.nowPlaying,
+                      list: snapshot.data,
                       title: 'NOW PLAYING MOVIES',
                     ),
+                  ],
+                );
+              },
+            ),
+            Futuristic(
+              futureBuilder: () => controller.getUpcomingData(),
+              dataBuilder: (context, snapshot) {
+                return Column(
+                  children: [
                     InkWell(
                       onTap: (() => Get.toNamed(Routes.moviesUpcoming)),
                       child: const CarousellTitle(
@@ -43,9 +49,18 @@ class MoviesPageView extends StatelessWidget {
                       ),
                     ),
                     MoviesListView(
-                      list: controller.upcoming,
+                      list: snapshot.data,
                       title: 'UPCOMING MOVIES',
                     ),
+                  ],
+                );
+              },
+            ),
+            Futuristic(
+              futureBuilder: () => controller.getPopularData(),
+              dataBuilder: (context, snapshot) {
+                return Column(
+                  children: [
                     InkWell(
                       onTap: (() => Get.toNamed(Routes.moviesPopular)),
                       child: const CarousellTitle(
@@ -53,7 +68,7 @@ class MoviesPageView extends StatelessWidget {
                       ),
                     ),
                     MoviesListView(
-                      list: controller.popular,
+                      list: snapshot.data,
                       title: 'POPULAR MOVIES',
                     ),
                   ],

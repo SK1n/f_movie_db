@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:f_movie_db/modules/movies_now_playing/controllers/movies_now_playing_controller.dart';
+import 'package:f_movie_db/modules/movies_now_playing/views/movies_popular_item.dart';
 import 'package:f_movie_db/widgets/custom_app_bar.dart';
-import 'package:f_movie_db/widgets/movie_item_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pagination_view/pagination_view.dart';
@@ -23,8 +23,8 @@ class MoviesNowPlayingView extends StatelessWidget {
         paginationViewType: PaginationViewType.gridView,
         pullToRefresh: true,
         itemBuilder: ((context, item, index) {
-          int id = Random().nextInt(50000);
-          return MovieItemView(item: item, id: id);
+          String posterId = '${item.id}${Random().nextInt(500000)}';
+          return MoviesNowPlayingItem(posterId: posterId, item: item);
         }),
         pageFetch: (currentListSize) => controller.getData(currentListSize),
         onEmpty: Container(),

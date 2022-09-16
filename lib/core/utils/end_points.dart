@@ -9,7 +9,9 @@ class EndPoints {
   String get tvShowsPopular => 'tv/popular';
   String get tvShowsTopRated => 'tv/top_rated';
   String get tvShowsVideo => 'tv/$id/videos';
+  String get tvShowsDetails => 'tv/$id';
   String get personDetails => 'person/$id';
   String get creditsMovie => 'person/$id/movie_credits';
   String get creditsTvShows => 'person/$id/tv_credits';
+  String get movieDetails => 'movie/$id';
 }
