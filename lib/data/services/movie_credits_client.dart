@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/core/utils/end_points.dart';
@@ -22,9 +24,14 @@ class MovieCreditsClient {
         Map<String, dynamic> jsonResponse = response.data;
         MovieCredits item = MovieCredits.fromJson(jsonResponse);
         return item;
+      } else {
+        throw HttpException(
+            'Code: ${response.statusCode} \nMessage: ${response.statusMessage}');
       }
     } on DioError catch (e) {
       debugPrint('snapshot: ${e.message}');
+    } on HttpException catch (e) {
+      debugPrint(e.message);
     }
   }
 }

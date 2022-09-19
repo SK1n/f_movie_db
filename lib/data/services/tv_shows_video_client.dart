@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/core/utils/api_key.dart';
@@ -26,9 +28,14 @@ class TvShowsVideoClient {
         Map<String, dynamic> jsonResponse = response.data;
         Video item = Video.fromJson(jsonResponse);
         return item;
+      } else {
+        throw HttpException(
+            'Code: ${response.statusCode} \nMessage: ${response.statusMessage}');
       }
-    } catch (e) {
-      debugPrint(e.toString());
+    } on DioError catch (e) {
+      debugPrint('snapshot: ${e.message}');
+    } on HttpException catch (e) {
+      debugPrint(e.message);
     }
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/data/model/movies_results.dart';
@@ -31,9 +33,14 @@ class MoviesClient {
           return MoviesResults.fromJson(map);
         }).toList();
         return listMovies;
+      } else {
+        throw HttpException(
+            'Code: ${response.statusCode} \nMessage: ${response.statusMessage}');
       }
-    } catch (e) {
-      debugPrint(e.toString());
+    } on DioError catch (e) {
+      debugPrint('snapshot: ${e.message}');
+    } on HttpException catch (e) {
+      debugPrint(e.message);
     }
   }
 }

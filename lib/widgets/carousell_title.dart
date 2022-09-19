@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 
 class CarousellTitle extends StatelessWidget {
   final String title;
-  const CarousellTitle({super.key, required this.title});
+  final bool showArrow;
+  const CarousellTitle({super.key, required this.title, this.showArrow = true});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +27,12 @@ class CarousellTitle extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          margin: const EdgeInsets.only(right: Paddings.rightPaddings),
-          child: const Icon(Icons.arrow_forward_sharp),
-        )
+        showArrow
+            ? Container(
+                margin: const EdgeInsets.only(right: Paddings.rightPaddings),
+                child: const Icon(Icons.arrow_forward_sharp),
+              )
+            : Container(),
       ],
     );
   }

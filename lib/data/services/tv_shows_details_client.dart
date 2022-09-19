@@ -16,6 +16,7 @@ class TvShowsDetailsClient {
   });
 
   Future getData() async {
+    debugPrint('$baseURL${EndPoints(id: id).tvShowsDetails}?api_key=$apiKey');
     try {
       var response = await httpClient.get(
         baseURL + EndPoints(id: id).tvShowsDetails,
@@ -27,6 +28,7 @@ class TvShowsDetailsClient {
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse = response.data;
         TvShowsDetails item = TvShowsDetails.fromJson(jsonResponse);
+        debugPrint('json: $jsonResponse');
         return item;
       } else {
         throw HttpException(

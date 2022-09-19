@@ -2,6 +2,7 @@ import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details_created_
 import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details_genre.dart';
 import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details_last_episode_to_air.dart';
 import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details_networks.dart';
+import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details_next_episode_to_air.dart';
 import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details_production_companies.dart';
 import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details_production_countries.dart';
 import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details_seasons.dart';
@@ -21,7 +22,7 @@ class TvShowsDetails {
   String? lastAirDate;
   TvShowsDetailsLastEpisodeToAir? lastEpisodeToAir;
   String? name;
-  String? nextEpisodeToAir;
+  TvShowsDetailsNextEpisodeToAir? nextEpisodeToAir;
   List<TvShowsDetailsNetworks>? networks;
   num? numberOfEpisodes;
   num? numberOfSeasons;
@@ -101,7 +102,9 @@ class TvShowsDetails {
         ? TvShowsDetailsLastEpisodeToAir.fromJson(json['last_episode_to_air'])
         : null;
     name = json['name'];
-    nextEpisodeToAir = json['next_episode_to_air'];
+    nextEpisodeToAir = json['next_episode_to_air'] != null
+        ? TvShowsDetailsNextEpisodeToAir.fromJson(json['next_episode_to_air'])
+        : null;
     if (json['networks'] != null) {
       networks = <TvShowsDetailsNetworks>[];
       json['networks'].forEach((v) {
@@ -168,7 +171,9 @@ class TvShowsDetails {
       data['last_episode_to_air'] = lastEpisodeToAir!.toJson();
     }
     data['name'] = name;
-    data['next_episode_to_air'] = nextEpisodeToAir;
+    if (nextEpisodeToAir != null) {
+      data['next_episode_to_air'] = nextEpisodeToAir!.toJson();
+    }
     if (networks != null) {
       data['networks'] = networks!.map((v) => v.toJson()).toList();
     }

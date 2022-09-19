@@ -1,10 +1,10 @@
-import 'package:f_movie_db/modules/main_screen/views/movies_page_view.dart';
-import 'package:f_movie_db/modules/main_screen/views/tv_shows_page_view.dart';
+import 'package:f_movie_db/modules/movies_page/views/movies_page.dart';
+import 'package:f_movie_db/modules/tv_shows_page/views/tv_shows_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class BottomNavigationBarController extends GetxController {
-  List<Widget> tabs = const [MoviesPageView(), TvShowsPageView()];
+  List<Widget> tabs = const [MoviesPage(), TvShowsPage()];
 
   final _position = 0.obs;
   get position => _position.value;
@@ -12,8 +12,8 @@ class BottomNavigationBarController extends GetxController {
 
   Widget get page => tabs[position];
 
-  String getTitle(String title) {
-    if (title.isEmpty) {
+  String getTitle(title) {
+    if (title == null) {
       switch (position) {
         case 0:
           return 'Movies';

@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:f_movie_db/modules/movies_now_playing/controllers/movies_now_playing_controller.dart';
-import 'package:f_movie_db/modules/movies_now_playing/views/movies_popular_item.dart';
-import 'package:f_movie_db/widgets/custom_app_bar.dart';
+import 'package:f_movie_db/modules/movies_now_playing/views/movies_now_playing_item.dart';
+import 'package:f_movie_db/widgets/custom_app_bar/views/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pagination_view/pagination_view.dart';

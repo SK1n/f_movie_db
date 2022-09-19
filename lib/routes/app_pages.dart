@@ -1,10 +1,12 @@
-import 'package:f_movie_db/modules/credits/bindings/credits_bindings.dart';
-import 'package:f_movie_db/modules/credits/views/credits_view.dart';
-import 'package:f_movie_db/modules/main_screen/bindings/movies_bindings.dart';
-import 'package:f_movie_db/modules/main_screen/bindings/tv_shows_bindings.dart';
+import 'package:f_movie_db/modules/movies_page/bindings/movies_page_bindings.dart';
+import 'package:f_movie_db/modules/person_details/bindings/person_details_bindings.dart';
+import 'package:f_movie_db/modules/person_details/bindings/person_movies_credits_bindings.dart';
+import 'package:f_movie_db/modules/person_details/bindings/person_tv_shows_credits_bindings.dart';
+import 'package:f_movie_db/modules/person_details/views/person_details_page.dart';
+import 'package:f_movie_db/modules/tv_shows_page/bindings/tv_shows_bindings.dart';
 import 'package:f_movie_db/modules/main_screen/views/main_page_view.dart';
-import 'package:f_movie_db/modules/movie_page/bindings/movie_page_bindings.dart';
-import 'package:f_movie_db/modules/movie_page/views/movie_page_view.dart';
+import 'package:f_movie_db/modules/movies_details/bindings/movie_page_bindings.dart';
+import 'package:f_movie_db/modules/movies_details/views/movie_page_view.dart';
 import 'package:f_movie_db/modules/movies_now_playing/bindings/movies_now_playing_bindings.dart';
 import 'package:f_movie_db/modules/movies_now_playing/views/movies_now_playing_view.dart';
 import 'package:f_movie_db/modules/movies_popular/bindings/movies_popular_bindings.dart';
@@ -12,8 +14,8 @@ import 'package:f_movie_db/modules/movies_popular/views/movies_popular_view.dart
 import 'package:f_movie_db/modules/movies_upcoming/bindings/movies_upcoming_bindings.dart';
 import 'package:f_movie_db/modules/movies_upcoming/views/movies_upcoming_view.dart';
 import 'package:f_movie_db/modules/root/views/root_view.dart';
-import 'package:f_movie_db/modules/tv_show_page/bindings/tv_shows_page_bindings.dart';
-import 'package:f_movie_db/modules/tv_show_page/views/tv_shows_page_view.dart';
+import 'package:f_movie_db/modules/tv_shows_details/bindings/tv_shows_details_bindings.dart';
+import 'package:f_movie_db/modules/tv_shows_details/views/tv_shows_details_page.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:f_movie_db/widgets/bottom_navigation_bar/bindings/bottom_navigation_bar_bindings.dart';
 import 'package:get/get.dart';
@@ -33,20 +35,20 @@ abstract class AppPages {
           name: Routes.home,
           page: () => const MainPageUi(),
           bindings: [
-            MoviesBinding(),
-            TvShowsBinding(),
+            MoviesPageBinding(),
             BottomNavigationBarBinding(),
+            TvShowsPageBinding(),
           ],
         ),
         GetPage(
-          name: Routes.moviePage,
+          name: Routes.moviesDetails,
           page: () => const MoviePageView(),
           bindings: [
             MoviePageBindings(),
           ],
         ),
         GetPage(
-          name: Routes.nowPlaying,
+          name: Routes.moviesNowPlaying,
           page: () => const MoviesNowPlayingView(),
           binding: MoviesNowPlayingBinding(),
         ),
@@ -61,14 +63,19 @@ abstract class AppPages {
           binding: MoviesUpcomingBinding(),
         ),
         GetPage(
-          name: Routes.tvShowsPage,
-          page: () => const TvShowsItemPageUI(),
-          binding: TvShowsPageBinding(),
+          name: Routes.tvShowsDetails,
+          page: () => const TvShowsDetailsPage(),
+          binding: TvShowsDetailsBinding(),
         ),
         GetPage(
-            name: Routes.credits,
-            page: () => const CreditsView(),
-            binding: CreditsBinding()),
+          name: Routes.personDetails,
+          page: () => const PersonDetailsPage(),
+          bindings: [
+            PersonDetailsBinding(),
+            PersonMoviesCreditsBinding(),
+            PersonTvShowsCreditsBinding(),
+          ],
+        ),
       ],
     )
   ];
