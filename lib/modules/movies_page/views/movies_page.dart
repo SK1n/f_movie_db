@@ -15,69 +15,66 @@ class MoviesPage extends StatelessWidget {
     MoviesPageController controller = Get.find();
 
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(Paddings.allPaddings),
-        child: Column(
-          children: [
-            Futuristic(
-              futureBuilder: () => controller.getNowPlayingData(),
-              dataBuilder: (context, snapshot) {
-                return Column(
-                  children: [
-                    InkWell(
-                      onTap: (() => Get.toNamed(Routes.moviesNowPlaying)),
-                      child: const CarousellTitle(
-                        title: 'NOW PLAYING MOVIES',
-                      ),
-                    ),
-                    MoviesListView(
-                      list: snapshot.data,
+      child: Column(
+        children: [
+          Futuristic(
+            futureBuilder: () => controller.getNowPlayingData(),
+            dataBuilder: (context, snapshot) {
+              return Column(
+                children: [
+                  InkWell(
+                    onTap: (() => Get.toNamed(Routes.moviesNowPlaying)),
+                    child: const CarousellTitle(
                       title: 'NOW PLAYING MOVIES',
                     ),
-                  ],
-                );
-              },
-            ),
-            Futuristic(
-              futureBuilder: () => controller.getUpcomingData(),
-              dataBuilder: (context, snapshot) {
-                return Column(
-                  children: [
-                    InkWell(
-                      onTap: (() => Get.toNamed(Routes.moviesUpcoming)),
-                      child: const CarousellTitle(
-                        title: 'UPCOMING MOVIES',
-                      ),
-                    ),
-                    MoviesListView(
-                      list: snapshot.data,
+                  ),
+                  MoviesListView(
+                    list: snapshot.data,
+                    title: 'NOW PLAYING MOVIES',
+                  ),
+                ],
+              );
+            },
+          ),
+          Futuristic(
+            futureBuilder: () => controller.getUpcomingData(),
+            dataBuilder: (context, snapshot) {
+              return Column(
+                children: [
+                  InkWell(
+                    onTap: (() => Get.toNamed(Routes.moviesUpcoming)),
+                    child: const CarousellTitle(
                       title: 'UPCOMING MOVIES',
                     ),
-                  ],
-                );
-              },
-            ),
-            Futuristic(
-              futureBuilder: () => controller.getPopularData(),
-              dataBuilder: (context, snapshot) {
-                return Column(
-                  children: [
-                    InkWell(
-                      onTap: (() => Get.toNamed(Routes.moviesPopular)),
-                      child: const CarousellTitle(
-                        title: 'POPULAR MOVIES',
-                      ),
-                    ),
-                    MoviesListView(
-                      list: snapshot.data,
+                  ),
+                  MoviesListView(
+                    list: snapshot.data,
+                    title: 'UPCOMING MOVIES',
+                  ),
+                ],
+              );
+            },
+          ),
+          Futuristic(
+            futureBuilder: () => controller.getPopularData(),
+            dataBuilder: (context, snapshot) {
+              return Column(
+                children: [
+                  InkWell(
+                    onTap: (() => Get.toNamed(Routes.moviesPopular)),
+                    child: const CarousellTitle(
                       title: 'POPULAR MOVIES',
                     ),
-                  ],
-                );
-              },
-            ),
-          ],
-        ),
+                  ),
+                  MoviesListView(
+                    list: snapshot.data,
+                    title: 'POPULAR MOVIES',
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
       ),
     );
   }

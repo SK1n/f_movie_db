@@ -30,26 +30,6 @@ class TvShowsDetailsPage extends StatelessWidget {
           children: [
             //TODO: Find a place for this video!
 
-            // Hero(
-            //   tag: posterId,
-            //   child: Futuristic(
-            //     futureBuilder: () => tvShowsVideoController.getVideo(id),
-            //     onError: (p0, p1) {
-            //       return const Text('error');
-            //     },
-            //     dataBuilder: ((p0, p1) {
-            //       return YoutubePlayerBuilder(
-            //         player: YoutubePlayer(
-            //             width: Get.width,
-            //             controller:
-            //                 tvShowsVideoController.videoPlayerController!),
-            //         builder: ((context, item) {
-            //           return item;
-            //         }),
-            //       );
-            //     }),
-            //   ),
-            // ),
             Futuristic(
               futureBuilder: () => tvShowsItemController.getData(id),
               dataBuilder: (context, snapshot) {
@@ -59,9 +39,7 @@ class TvShowsDetailsPage extends StatelessWidget {
                     Stack(
                       alignment: AlignmentDirectional.bottomCenter,
                       children: [
-                        PosterImageWidget(
-                            condition: item.posterPath != null,
-                            link: item.posterPath ?? ''),
+                        PosterImageWidget(link: item.posterPath ?? ''),
                         Container(
                           color: Colors.black54,
                           width: Get.width,
