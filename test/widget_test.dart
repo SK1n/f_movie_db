@@ -5,26 +5,22 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:f_movie_db/modules/main_screen/views/main_page_view.dart';
+import 'package:f_movie_db/modules/movies_details/views/movie_page_view.dart';
+import 'package:f_movie_db/modules/movies_page/views/movies_page.dart';
+import 'package:f_movie_db/routes/app_routes.dart';
+import 'package:f_movie_db/widgets/bottom_navigation_bar/controllers/bottom_navigation_bar_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:f_movie_db/main.dart';
+import 'package:get/get.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.pumpWidget(const MainPageUi());
+    Get.put(BottomNavigationBarController());
+    Get.toNamed(Routes.moviesDetails, arguments: [2332]);
+    expect(find.text('Play video'), findsOneWidget);
   });
 }

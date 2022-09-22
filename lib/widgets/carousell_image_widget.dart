@@ -21,7 +21,7 @@ class CarousellImageWidget extends StatelessWidget {
               blurHash,
             ),
             height: 200,
-            width: Get.width / 2,
+            width: 100,
             errorBuilder: OctoError.icon(color: Colors.red),
             fit: BoxFit.cover,
           )

@@ -13,6 +13,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:octo_image/octo_image.dart';
 
+extension RemoveItems on List {
+  removeItems() {
+    removeWhere((element) => element.posterPath == null);
+  }
+}
+
 class PersonMoviesCreditsView extends StatelessWidget {
   final int id;
   const PersonMoviesCreditsView({super.key, required this.id});
@@ -26,9 +32,11 @@ class PersonMoviesCreditsView extends StatelessWidget {
         PersonMoviesCredits item = snapshot.data;
         List<PersonMoviesCreditsCast>? cast = item.cast;
         List<PersonMoviesCreditsCrew>? crew = item.crew;
+        cast!.removeItems();
+        crew!.removeItems();
         return Column(
           children: [
-            cast!.isNotEmpty || crew!.isNotEmpty
+            cast.isNotEmpty || crew.isNotEmpty
                 ? const CarousellTitle(
                     title: 'Movies Credits',
                     showArrow: false,
@@ -61,8 +69,8 @@ class PersonMoviesCreditsView extends StatelessWidget {
                                     children: [
                                       CarousellImageWidget(
                                           condition:
-                                              cast[index].backdropPath != null,
-                                          link: cast[index].backdropPath ?? ''),
+                                              cast[index].posterPath != null,
+                                          link: cast[index].posterPath ?? ''),
                                       Container(
                                         color: Colors.black87,
                                         width: Get.width / 2,
@@ -88,7 +96,7 @@ class PersonMoviesCreditsView extends StatelessWidget {
                     ],
                   )
                 : Container(),
-            crew!.isNotEmpty
+            crew.isNotEmpty
                 ? Column(
                     children: [
                       const Text('Crew'),
@@ -115,8 +123,8 @@ class PersonMoviesCreditsView extends StatelessWidget {
                                     children: [
                                       CarousellImageWidget(
                                           condition:
-                                              crew[index].backdropPath != null,
-                                          link: crew[index].backdropPath ?? ''),
+                                              crew[index].posterPath != null,
+                                          link: crew[index].posterPath ?? ''),
                                       Container(
                                         color: Colors.black87,
                                         width: Get.width / 2,

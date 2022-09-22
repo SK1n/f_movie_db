@@ -47,7 +47,7 @@ class TvShowsCastListView extends StatelessWidget {
                                 condition: list[index].profilePath != null,
                                 link: list[index].profilePath ?? ''),
                             Container(
-                              width: Get.width / 2,
+                              width: 100,
                               height: 50,
                               color: Colors.black87,
                               child: Padding(

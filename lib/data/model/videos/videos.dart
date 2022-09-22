@@ -1,17 +1,17 @@
-import 'package:f_movie_db/data/model/movies_videos/movies_videos_results.dart';
+import 'package:f_movie_db/data/model/videos/videos_results.dart';
 
 class MoviesVideos {
   int? id;
-  List<MoviesVideosResults>? results;
+  List<VideosResults>? results;
 
   MoviesVideos({this.id, this.results});
 
   MoviesVideos.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     if (json['results'] != null) {
-      results = <MoviesVideosResults>[];
+      results = <VideosResults>[];
       json['results'].forEach((v) {
-        results!.add(MoviesVideosResults.fromJson(v));
+        results!.add(VideosResults.fromJson(v));
       });
     }
   }

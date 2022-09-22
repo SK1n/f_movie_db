@@ -5,22 +5,24 @@ import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/core/utils/end_points.dart';
 import 'package:f_movie_db/data/model/movies_results.dart';
 import 'package:f_movie_db/core/utils/api_key.dart';
-import 'package:f_movie_db/data/model/movies_videos/movies_videos.dart';
-import 'package:f_movie_db/data/model/movies_videos/movies_videos_results.dart';
+import 'package:f_movie_db/data/model/videos/videos.dart';
+import 'package:f_movie_db/data/model/videos/videos_results.dart';
 import 'package:flutter/material.dart';
 
-class MoviesVideosClient {
+class VideosClient {
   final Dio httpClient;
+  String? endPoint;
   int? id;
-  MoviesVideosClient({
+  VideosClient({
     required this.httpClient,
+    this.endPoint,
     this.id,
   });
 
   Future getData() async {
     try {
       var response = await httpClient.get(
-        baseURL + EndPoints(id: id).moviesVideosResults,
+        baseURL + endPoint!,
         queryParameters: {
           'api_key': apiKey,
         },
@@ -28,10 +30,11 @@ class MoviesVideosClient {
 
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse = response.data;
-        List<MoviesVideosResults> listMovies =
-            jsonResponse['results'].map<MoviesVideosResults>((map) {
-          return MoviesVideosResults.fromJson(map);
+        List<VideosResults> listMovies =
+            jsonResponse['results'].map<VideosResults>((map) {
+          return VideosResults.fromJson(map);
         }).toList();
+
         return listMovies;
       } else {
         throw HttpException(

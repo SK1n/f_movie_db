@@ -11,7 +11,7 @@ class MovieDetails {
   num? budget;
   List<MovieDetailsGenres>? genres;
   String? homepage;
-  num? id;
+  int? id;
   String? imdbId;
   String? originalLanguage;
   String? originalTitle;

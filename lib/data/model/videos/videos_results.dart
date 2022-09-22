@@ -1,4 +1,4 @@
-class MoviesVideosResults {
+class VideosResults {
   String? iso6391;
   String? iso31661;
   String? name;
@@ -10,7 +10,7 @@ class MoviesVideosResults {
   String? publishedAt;
   String? id;
 
-  MoviesVideosResults(
+  VideosResults(
       {this.iso6391,
       this.iso31661,
       this.name,
@@ -22,7 +22,7 @@ class MoviesVideosResults {
       this.publishedAt,
       this.id});
 
-  MoviesVideosResults.fromJson(Map<String, dynamic> json) {
+  VideosResults.fromJson(Map<String, dynamic> json) {
     iso6391 = json['iso_639_1'];
     iso31661 = json['iso_3166_1'];
     name = json['name'];

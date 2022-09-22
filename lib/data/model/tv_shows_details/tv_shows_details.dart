@@ -16,7 +16,7 @@ class TvShowsDetails {
   String? firstAirDate;
   List<TvShowsDetailsGenres>? genres;
   String? homepage;
-  num? id;
+  int? id;
   bool? inProduction;
   List<String>? languages;
   String? lastAirDate;
