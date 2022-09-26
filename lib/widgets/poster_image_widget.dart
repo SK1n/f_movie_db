@@ -7,21 +7,23 @@ import 'package:get/get.dart';
 import 'package:octo_image/octo_image.dart';
 
 class PosterImageWidget extends StatelessWidget {
-  final String link;
+  final String? link;
   const PosterImageWidget({super.key, required this.link});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        boxShadow: [],
         image: DecorationImage(
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
             context.theme.scaffoldBackgroundColor.withOpacity(0.6),
             BlendMode.dstATop,
           ),
-          image: CachedNetworkImageProvider('$baseImageUrl$link',
+          image: CachedNetworkImageProvider(
+              link != null
+                  ? '$baseImageUrl$link'
+                  : 'https://developers.google.com/static/maps/documentation/streetview/images/error-image-generic.png?hl=sv',
               errorListener: (() {})),
         ),
       ),

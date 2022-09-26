@@ -6,6 +6,7 @@ abstract class Routes {
   static const moviesDetails = _Paths.moviesDetails;
   static const tvShowsDetails = _Paths.tvShowsDetails;
   static const personDetails = _Paths.personDetails;
+  static const tvShowsSeasonDetails = _Paths.tvShowsSeasonDetails;
 }
 
 abstract class _Paths {
@@ -16,4 +17,5 @@ abstract class _Paths {
   static const moviesDetails = '/moviesDetails';
   static const tvShowsDetails = '/tvShowsDetails';
   static const personDetails = '/personDetails';
+  static const tvShowsSeasonDetails = '/tvShowsSeasonDetails';
 }

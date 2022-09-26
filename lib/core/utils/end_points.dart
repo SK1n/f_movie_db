@@ -1,6 +1,7 @@
 class EndPoints {
   final int? id;
-  EndPoints({this.id});
+  final int? season;
+  EndPoints({this.id, this.season});
   String get movieDetails => 'movie/$id';
   String get moviesPopular => 'movie/popular';
   String get moviesUpcoming => 'movie/upcoming';
@@ -13,6 +14,7 @@ class EndPoints {
   String get tvShowsVideo => 'tv/$id/videos';
   String get tvShowsDetails => 'tv/$id';
   String get tvShowsCredits => 'tv/$id/credits';
+  String get tvShowsSeasonDetails => 'tv/$id/season/$season';
   String get personDetails => 'person/$id';
   String get personMoviesCredits => 'person/$id/movie_credits';
   String get personTvShowsCredits => '/person/$id/tv_credits';

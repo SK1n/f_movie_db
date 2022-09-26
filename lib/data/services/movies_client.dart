@@ -38,7 +38,7 @@ class MoviesClient {
             'Code: ${response.statusCode} \nMessage: ${response.statusMessage}');
       }
     } on DioError catch (e) {
-      debugPrint('snapshot: ${e.message}');
+      debugPrint('Dio: ${e.message}');
     } on HttpException catch (e) {
       debugPrint(e.message);
     }

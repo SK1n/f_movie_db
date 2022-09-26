@@ -16,6 +16,8 @@ import 'package:f_movie_db/modules/movies_upcoming/views/movies_upcoming_view.da
 import 'package:f_movie_db/modules/root/views/root_view.dart';
 import 'package:f_movie_db/modules/tv_shows_details/bindings/tv_shows_details_bindings.dart';
 import 'package:f_movie_db/modules/tv_shows_details/views/tv_shows_details_page.dart';
+import 'package:f_movie_db/modules/tv_shows_season_details/bindings/tv_shows_season_details_bindings.dart';
+import 'package:f_movie_db/modules/tv_shows_season_details/views/tv_shows_season_details_view.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:f_movie_db/widgets/bottom_navigation_bar/bindings/bottom_navigation_bar_bindings.dart';
 import 'package:get/get.dart';
@@ -74,6 +76,13 @@ abstract class AppPages {
             PersonDetailsBinding(),
             PersonMoviesCreditsBinding(),
             PersonTvShowsCreditsBinding(),
+          ],
+        ),
+        GetPage(
+          name: Routes.tvShowsSeasonDetails,
+          page: () => const TvShowsSeasonDetailsView(),
+          bindings: [
+            TvShowsSeasonDetailsBinding(),
           ],
         ),
       ],

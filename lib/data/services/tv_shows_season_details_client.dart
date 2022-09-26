@@ -5,20 +5,23 @@ import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/core/utils/end_points.dart';
 import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details.dart';
 import 'package:f_movie_db/core/utils/api_key.dart';
+import 'package:f_movie_db/data/model/tv_shows_season_details/tv_shows_season_details.dart';
 import 'package:flutter/material.dart';
 
-class TvShowsDetailsClient {
+class TvShowsSeasonDetailsClient {
   final Dio httpClient;
   int? id;
-  TvShowsDetailsClient({
+  int? season;
+  TvShowsSeasonDetailsClient({
     required this.httpClient,
     this.id,
+    this.season,
   });
 
   Future getData() async {
     try {
       var response = await httpClient.get(
-        baseURL + EndPoints(id: id).tvShowsDetails,
+        baseURL + EndPoints(id: id, season: season).tvShowsSeasonDetails,
         queryParameters: {
           'api_key': apiKey,
         },
@@ -26,7 +29,7 @@ class TvShowsDetailsClient {
 
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse = response.data;
-        TvShowsDetails item = TvShowsDetails.fromJson(jsonResponse);
+        TvShowsSeasonDetails item = TvShowsSeasonDetails.fromJson(jsonResponse);
         return item;
       } else {
         throw HttpException(

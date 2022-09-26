@@ -30,22 +30,16 @@ class PersonMoviesCreditsView extends StatelessWidget {
       futureBuilder: () => moviesCreditsController.getData(id),
       dataBuilder: (context, snapshot) {
         PersonMoviesCredits item = snapshot.data;
-        List<PersonMoviesCreditsCast>? cast = item.cast;
-        List<PersonMoviesCreditsCrew>? crew = item.crew;
-        cast!.removeItems();
-        crew!.removeItems();
+        List<PersonMoviesCreditsCast>? cast = item.cast!.removeItems();
         return Column(
           children: [
-            cast.isNotEmpty || crew.isNotEmpty
-                ? const CarousellTitle(
-                    title: 'Movies Credits',
-                    showArrow: false,
-                  )
-                : Container(),
-            cast.isNotEmpty
+            cast!.isNotEmpty
                 ? Column(
                     children: [
-                      const Text('Cast'),
+                      const CarousellTitle(
+                        title: 'Movies Credits',
+                        showArrow: false,
+                      ),
                       SizedBox(
                         height: 200,
                         child: ListView.builder(
@@ -79,60 +73,6 @@ class PersonMoviesCreditsView extends StatelessWidget {
                                           padding: const EdgeInsets.all(8.0),
                                           child: AutoSizeText(
                                             '${cast[index].title}',
-                                            maxLines: 2,
-                                            minFontSize: 8,
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  )
-                : Container(),
-            crew.isNotEmpty
-                ? Column(
-                    children: [
-                      const Text('Crew'),
-                      SizedBox(
-                        height: 200,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: crew.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return SizedBox(
-                              width: 100,
-                              child: InkWell(
-                                onTap: (() {
-                                  Get.toNamed(Routes.moviesDetails, arguments: [
-                                    crew[index].id,
-                                    crew[index].title
-                                  ]);
-                                }),
-                                child: Card(
-                                  child: Stack(
-                                    alignment:
-                                        AlignmentDirectional.bottomCenter,
-                                    children: [
-                                      CarousellImageWidget(
-                                          condition:
-                                              crew[index].posterPath != null,
-                                          link: crew[index].posterPath ?? ''),
-                                      Container(
-                                        color: Colors.black87,
-                                        width: Get.width / 2,
-                                        height: 50,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: AutoSizeText(
-                                            '${crew[index].title}',
                                             maxLines: 2,
                                             minFontSize: 8,
                                             textAlign: TextAlign.center,

@@ -27,121 +27,68 @@ class PersonTvShowsCreditsView extends StatelessWidget {
       futureBuilder: () => tvShowsCreditsController.getData(id),
       dataBuilder: (context, snapshot) {
         PersonTvShowsCredits item = snapshot.data;
-        List<PersonTvShowsCreditsCast>? cast = item.cast;
-        List<PersonTvShowsCreditsCrew>? crew = item.crew;
-        cast!.removeItems();
-        crew!.removeItems();
+        List<PersonTvShowsCreditsCast>? cast = item.cast!.removeItems();
         return Column(
           children: [
-            cast.isNotEmpty || crew.isNotEmpty
-                ? const CarousellTitle(
-                    title: 'Tv Shows Credits',
-                    showArrow: false,
-                  )
-                : Container(),
-            cast.isNotEmpty
-                ? Column(
-                    children: [
-                      const Text('Cast'),
-                      SizedBox(
-                        height: 200,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: cast.length,
-                          itemBuilder: (context, index) {
-                            return SizedBox(
-                              width: 100,
-                              child: InkWell(
-                                onTap: (() {
-                                  Get.toNamed(Routes.tvShowsDetails,
-                                      arguments: [cast[index].id]);
-                                }),
-                                child: Card(
-                                  child: Stack(
-                                    alignment:
-                                        AlignmentDirectional.bottomCenter,
-                                    children: [
-                                      CarousellImageWidget(
-                                          condition:
-                                              cast[index].posterPath != null,
-                                          link: cast[index].posterPath ?? ''),
-                                      Container(
-                                        color: Colors.black87,
-                                        width: Get.width / 2,
-                                        height: 50,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: AutoSizeText(
-                                            '${cast[index].name}',
-                                            maxLines: 2,
-                                            minFontSize: 8,
-                                            textAlign: TextAlign.center,
+            cast != null
+                ? cast.isNotEmpty
+                    ? Column(
+                        children: [
+                          const CarousellTitle(
+                            title: 'Tv Shows Credits',
+                            showArrow: false,
+                          ),
+                          SizedBox(
+                            height: 200,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: cast.length,
+                              itemBuilder: (context, index) {
+                                return SizedBox(
+                                  width: 100,
+                                  child: InkWell(
+                                    onTap: (() {
+                                      Get.toNamed(Routes.tvShowsDetails,
+                                          arguments: [cast[index].id]);
+                                    }),
+                                    child: Card(
+                                      child: Stack(
+                                        alignment:
+                                            AlignmentDirectional.bottomCenter,
+                                        children: [
+                                          CarousellImageWidget(
+                                              condition:
+                                                  cast[index].posterPath !=
+                                                      null,
+                                              link:
+                                                  cast[index].posterPath ?? ''),
+                                          Container(
+                                            color: Colors.black87,
+                                            width: Get.width / 2,
+                                            height: 50,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: AutoSizeText(
+                                                '${cast[index].name}',
+                                                maxLines: 2,
+                                                minFontSize: 8,
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
                                           ),
-                                        ),
+                                        ],
                                       ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  )
-                : Container(),
-            crew.isNotEmpty
-                ? Column(
-                    children: [
-                      const Text('Crew'),
-                      SizedBox(
-                        height: 200,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: crew.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return SizedBox(
-                              width: 100,
-                              child: InkWell(
-                                onTap: (() {
-                                  Get.toNamed(Routes.tvShowsDetails,
-                                      arguments: [crew[index].id]);
-                                }),
-                                child: Card(
-                                  child: Stack(
-                                    alignment:
-                                        AlignmentDirectional.bottomCenter,
-                                    children: [
-                                      CarousellImageWidget(
-                                          condition:
-                                              crew[index].posterPath != null,
-                                          link: crew[index].posterPath ?? ''),
-                                      Container(
-                                        color: Colors.black87,
-                                        width: Get.width / 2,
-                                        height: 50,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: AutoSizeText(
-                                            '${crew[index].name}',
-                                            maxLines: 2,
-                                            minFontSize: 8,
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  )
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      )
+                    : Container()
                 : Container(),
           ],
         );

@@ -1,3 +1,4 @@
+import 'package:f_movie_db/widgets/app_bar/views/main_screen_app_bar_view.dart';
 import 'package:f_movie_db/widgets/bottom_navigation_bar/controllers/bottom_navigation_bar_controller.dart';
 import 'package:f_movie_db/widgets/bottom_navigation_bar/views/bottom_navigation_bar_view.dart';
 import 'package:f_movie_db/widgets/custom_app_bar/views/custom_app_bar.dart';
@@ -11,9 +12,14 @@ class MainPageUi extends StatelessWidget {
   Widget build(BuildContext context) {
     BottomNavigationBarController controller = Get.find();
     return Scaffold(
-      appBar: const CustomAppBar(),
       bottomNavigationBar: const BottomNavigationBarView(),
-      body: Obx(() => controller.page),
+      body: CustomScrollView(slivers: [
+        const MainScreenAppBarView(),
+        SliverList(
+            delegate: SliverChildListDelegate([
+          Obx(() => controller.page),
+        ]))
+      ]),
     );
   }
 }

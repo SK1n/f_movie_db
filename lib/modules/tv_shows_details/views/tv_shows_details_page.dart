@@ -9,6 +9,7 @@ import 'package:f_movie_db/modules/tv_shows_details/controllers/tv_shows_credits
 import 'package:f_movie_db/modules/tv_shows_details/controllers/tv_shows_item_controller.dart';
 import 'package:f_movie_db/modules/tv_shows_details/views/tv_shows_cast_list_view.dart';
 import 'package:f_movie_db/modules/tv_shows_details/views/tv_shows_crew_list_view.dart';
+import 'package:f_movie_db/modules/tv_shows_details/views/tv_shows_season_details_list.dart';
 import 'package:f_movie_db/widgets/app_bar/views/app_bar_view.dart';
 import 'package:f_movie_db/widgets/custom_app_bar/views/custom_app_bar.dart';
 import 'package:f_movie_db/widgets/futuristic.dart';
@@ -78,6 +79,11 @@ class TvShowsDetailsPage extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              TvShowsSeasonDetailsList(
+                id: id,
+                list: item.seasons!,
+                numberOfSeasons: item.numberOfSeasons,
               ),
             ],
           ),
