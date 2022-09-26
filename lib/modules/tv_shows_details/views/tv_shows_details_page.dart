@@ -1,23 +1,14 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/core/utils/end_points.dart';
-import 'package:f_movie_db/core/utils/paddings.dart';
 import 'package:f_movie_db/data/model/tv_shows_credits.dart/tv_shows_credits.dart';
 import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details.dart';
 import 'package:f_movie_db/modules/tv_shows_details/controllers/tv_shows_credits_controller.dart';
 import 'package:f_movie_db/modules/tv_shows_details/controllers/tv_shows_item_controller.dart';
 import 'package:f_movie_db/modules/tv_shows_details/views/tv_shows_cast_list_view.dart';
-import 'package:f_movie_db/modules/tv_shows_details/views/tv_shows_crew_list_view.dart';
 import 'package:f_movie_db/modules/tv_shows_details/views/tv_shows_season_details_list.dart';
 import 'package:f_movie_db/widgets/app_bar/views/app_bar_view.dart';
-import 'package:f_movie_db/widgets/custom_app_bar/views/custom_app_bar.dart';
 import 'package:f_movie_db/widgets/futuristic.dart';
-import 'package:f_movie_db/widgets/carousell_image_widget.dart';
-import 'package:f_movie_db/widgets/poster_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:octo_image/octo_image.dart';
 import 'package:rich_text_view/rich_text_view.dart';
 
 class TvShowsDetailsPage extends StatelessWidget {

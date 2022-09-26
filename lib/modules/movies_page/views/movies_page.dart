@@ -1,4 +1,3 @@
-import 'package:f_movie_db/core/utils/paddings.dart';
 import 'package:f_movie_db/modules/movies_page/controllers/movies_page_controller.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:f_movie_db/widgets/futuristic.dart';

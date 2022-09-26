@@ -2,10 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/const.dart';
-import 'package:f_movie_db/core/utils/end_points.dart';
-import 'package:f_movie_db/data/model/movies_results.dart';
 import 'package:f_movie_db/core/utils/api_key.dart';
-import 'package:f_movie_db/data/model/videos/videos.dart';
 import 'package:f_movie_db/data/model/videos/videos_results.dart';
 import 'package:flutter/material.dart';
 

@@ -1,6 +1,4 @@
-import 'package:f_movie_db/data/model/movie_details/movie_details_genres.dart';
 import 'package:f_movie_db/data/model/videos/videos_results.dart';
-import 'package:f_movie_db/data/services/movie_details_client.dart';
 import 'package:f_movie_db/data/services/videos_client.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

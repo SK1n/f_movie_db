@@ -1,13 +1,7 @@
-import 'dart:ffi';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:expandable/expandable.dart';
 import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details_seasons.dart';
-import 'package:f_movie_db/data/model/tv_shows_season_details/tv_shows_season_details.dart';
-import 'package:f_movie_db/data/model/tv_shows_season_details/tv_shows_season_episodes.dart';
-import 'package:f_movie_db/modules/tv_shows_season_details/controllers/tv_shows_season_details_controller.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
-import 'package:f_movie_db/widgets/futuristic.dart';
 import 'package:f_movie_db/widgets/poster_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

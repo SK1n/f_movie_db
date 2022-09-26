@@ -22,7 +22,6 @@ class TvShowsPage extends StatelessWidget {
               dataBuilder: (p0, p1) {
                 return Column(
                   children: [
-                    //TODO: update route
                     InkWell(
                       onTap: () {},
                       child: const CarousellTitle(

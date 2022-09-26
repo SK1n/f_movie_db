@@ -1,6 +1,4 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/core/utils/paddings.dart';
 import 'package:f_movie_db/data/model/tv_shows_results.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
@@ -8,7 +6,6 @@ import 'package:f_movie_db/widgets/custom_app_bar/controllers/custom_app_bar_con
 import 'package:f_movie_db/widgets/carousell_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:octo_image/octo_image.dart';
 
 class TvShowsListView extends StatelessWidget {
   final List<TvShowsResults> list;

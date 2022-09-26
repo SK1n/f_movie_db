@@ -6,14 +6,10 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:f_movie_db/modules/main_screen/views/main_page_view.dart';
-import 'package:f_movie_db/modules/movies_details/views/movie_page_view.dart';
-import 'package:f_movie_db/modules/movies_page/views/movies_page.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:f_movie_db/widgets/bottom_navigation_bar/controllers/bottom_navigation_bar_controller.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:f_movie_db/main.dart';
 import 'package:get/get.dart';
 
 void main() {

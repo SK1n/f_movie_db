@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:f_movie_db/data/model/person_tv_shows_credits/person_tv_shows_credits.dart';
 import 'package:f_movie_db/data/model/person_tv_shows_credits/person_tv_shows_credits_cast.dart';
-import 'package:f_movie_db/data/model/person_tv_shows_credits/person_tv_shows_credits_crew.dart';
 import 'package:f_movie_db/modules/person_details/controllers/person_tv_shows_credits_controller.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:f_movie_db/widgets/carousell_title.dart';

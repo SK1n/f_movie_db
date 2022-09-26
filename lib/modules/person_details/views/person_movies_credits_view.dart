@@ -1,9 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:f_movie_db/core/const.dart';
 import 'package:f_movie_db/data/model/person_movies_credits/person_movies_credits.dart';
 import 'package:f_movie_db/data/model/person_movies_credits/person_movies_credits_cast.dart';
-import 'package:f_movie_db/data/model/person_movies_credits/person_movies_credits_crew.dart';
 import 'package:f_movie_db/modules/person_details/controllers/person_movies_credits_controller.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:f_movie_db/widgets/carousell_title.dart';
@@ -11,7 +8,6 @@ import 'package:f_movie_db/widgets/futuristic.dart';
 import 'package:f_movie_db/widgets/carousell_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:octo_image/octo_image.dart';
 
 extension RemoveItems on List {
   removeItems() {

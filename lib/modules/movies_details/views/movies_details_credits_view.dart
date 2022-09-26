@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:f_movie_db/data/model/movie_credits/movie_credits.dart';
 import 'package:f_movie_db/data/model/movie_credits/movie_credits_cast.dart';
-import 'package:f_movie_db/data/model/movie_credits/movie_credits_crew.dart';
 import 'package:f_movie_db/modules/movies_details/controllers/movie_credits_controller.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:f_movie_db/widgets/futuristic.dart';
