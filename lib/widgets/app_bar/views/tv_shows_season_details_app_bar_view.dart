@@ -10,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 class TvShowsSeasonDetailsAppBarView extends StatelessWidget {
   final String title;
   final int id;
-  final String posterPath;
+  final String? posterPath;
   const TvShowsSeasonDetailsAppBarView({
     super.key,
     required this.title,

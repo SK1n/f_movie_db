@@ -28,7 +28,7 @@ class TvShowsSeasonDetailsView extends StatelessWidget {
           body: CustomScrollView(
             slivers: [
               TvShowsSeasonDetailsAppBarView(
-                  title: item.name!, posterPath: item.posterPath!, id: id!),
+                  title: item.name!, posterPath: item.posterPath, id: id!),
               SliverList(
                 delegate: SliverChildListDelegate([
                   ListView.builder(
