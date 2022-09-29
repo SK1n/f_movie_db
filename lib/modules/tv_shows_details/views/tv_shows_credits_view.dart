@@ -1,27 +1,25 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:f_movie_db/data/model/movie_credits/movie_credits.dart';
-import 'package:f_movie_db/data/model/movie_credits/movie_credits_cast.dart';
-import 'package:f_movie_db/modules/movies_details/controllers/movie_credits_controller.dart';
+import 'package:f_movie_db/data/model/tv_shows_credits/tv_shows_credits.dart';
+import 'package:f_movie_db/data/model/tv_shows_credits/tv_shows_credits_cast.dart';
+import 'package:f_movie_db/modules/tv_shows_details/controllers/tv_shows_credits_controller.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
-import 'package:f_movie_db/widgets/futuristic.dart';
 import 'package:f_movie_db/widgets/carousell_image_widget.dart';
+import 'package:f_movie_db/widgets/futuristic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-//remove items which has no profile picture for a better looking UI
-
-class MoviesDetailsCastView extends StatelessWidget {
-  final num id;
-  const MoviesDetailsCastView({super.key, required this.id});
+class TvShowsCreditsView extends StatelessWidget {
+  final int id;
+  const TvShowsCreditsView({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    MovieCreditsController controller = Get.find();
+    TvShowsCreditsController controller = Get.find();
     return Futuristic(
       futureBuilder: () => controller.getData(id),
       dataBuilder: (context, snapshot) {
-        MovieCredits item = snapshot.data;
-        List<MovieCreditsCast>? cast = item.cast;
+        TvShowsCredits item = snapshot.data;
+        List<TvShowsCreditsCast>? cast = item.cast;
 
         return cast != null
             ? Column(
@@ -41,10 +39,8 @@ class MoviesDetailsCastView extends StatelessWidget {
                         return SizedBox(
                           width: 100,
                           child: InkWell(
-                            onTap: (() {
-                              Get.toNamed(Routes.personDetails,
-                                  arguments: [cast[index].id]);
-                            }),
+                            onTap: (() => Get.toNamed(Routes.personDetails,
+                                arguments: [cast[index].id])),
                             child: Card(
                               child: Stack(
                                 alignment: AlignmentDirectional.bottomCenter,

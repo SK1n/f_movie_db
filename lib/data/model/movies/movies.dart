@@ -1,8 +1,8 @@
-import 'package:f_movie_db/data/model/dates.dart';
-import 'package:f_movie_db/data/model/movies_results.dart';
+import 'package:f_movie_db/data/model/movies/movies_dates.dart';
+import 'package:f_movie_db/data/model/movies/movies_results.dart';
 
 class Movies {
-  Dates? dates;
+  MoviesDates? dates;
   int? page;
   List<MoviesResults>? results;
   int? totalPages;
@@ -16,7 +16,7 @@ class Movies {
       this.totalResults});
 
   Movies.fromJson(Map<String, dynamic> json) {
-    dates = json['dates'] != null ? Dates.fromJson(json['dates']) : null;
+    dates = json['dates'] != null ? MoviesDates.fromJson(json['dates']) : null;
     page = json['page'];
     if (json['results'] != null) {
       results = <MoviesResults>[];

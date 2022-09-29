@@ -6,8 +6,7 @@ class TvShowsItemController extends GetxController {
   final TvShowsDetailsClient client;
   TvShowsItemController(this.client);
 
-  Future<TvShowsDetails> getData(tvShowId) async {
-    client.id = tvShowId;
-    return await client.getData();
+  Future<TvShowsDetails> getData(id) async {
+    return await client.getData(id);
   }
 }

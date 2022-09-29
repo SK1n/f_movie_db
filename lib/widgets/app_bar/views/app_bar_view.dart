@@ -30,8 +30,7 @@ class AppBarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppBarController controller =
-        Get.put(AppBarController(VideosClient(httpClient: Dio())));
+    AppBarController controller = Get.put(AppBarController(VideosClient()));
     return SliverAppBar(
       expandedHeight: 400,
       floating: false,

@@ -6,8 +6,7 @@ class PersonMoviesCreditsController extends GetxController {
   final PersonMoviesCreditsClient client;
   PersonMoviesCreditsController(this.client);
 
-  Future<PersonMoviesCredits> getData(personId) async {
-    client.id = personId;
-    return await client.getData();
+  Future<PersonMoviesCredits> getData(id) async {
+    return await client.getData(id);
   }
 }

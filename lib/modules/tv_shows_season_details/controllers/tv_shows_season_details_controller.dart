@@ -7,8 +7,6 @@ class TvShowsSeasonDetailsController extends GetxController {
   TvShowsSeasonDetailsController(this.client);
 
   Future<TvShowsSeasonDetails> getData(int? id, int? season) async {
-    client.id = id;
-    client.season = season;
-    return await client.getData();
+    return await client.getData(id, season);
   }
 }

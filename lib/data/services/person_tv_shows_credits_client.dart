@@ -8,13 +8,11 @@ import 'package:f_movie_db/data/model/person_tv_shows_credits/person_tv_shows_cr
 import 'package:flutter/material.dart';
 
 class PersonTvShowsCreditsClient {
-  final Dio httpClient;
-  int? id;
-  PersonTvShowsCreditsClient({required this.httpClient, this.id});
+  PersonTvShowsCreditsClient();
 
-  getData() async {
+  getData(id) async {
     try {
-      var response = await httpClient.get(
+      var response = await Dio().get(
         baseURL + EndPoints(id: id).personTvShowsCredits,
         queryParameters: {
           'api_key': apiKey,

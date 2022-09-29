@@ -8,9 +8,7 @@ class TvShowsSeasonDetailsBinding implements Bindings {
   void dependencies() {
     Get.lazyPut<TvShowsSeasonDetailsController>(
       () => TvShowsSeasonDetailsController(
-        TvShowsSeasonDetailsClient(
-          httpClient: Dio(),
-        ),
+        TvShowsSeasonDetailsClient(),
       ),
     );
   }

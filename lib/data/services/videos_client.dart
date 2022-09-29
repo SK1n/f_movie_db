@@ -7,19 +7,12 @@ import 'package:f_movie_db/data/model/videos/videos_results.dart';
 import 'package:flutter/material.dart';
 
 class VideosClient {
-  final Dio httpClient;
-  String? endPoint;
-  int? id;
-  VideosClient({
-    required this.httpClient,
-    this.endPoint,
-    this.id,
-  });
+  VideosClient();
 
-  Future getData() async {
+  Future getData(int id, endPoint) async {
     try {
-      var response = await httpClient.get(
-        baseURL + endPoint!,
+      var response = await Dio().get(
+        baseURL + endPoint,
         queryParameters: {
           'api_key': apiKey,
         },
@@ -27,12 +20,11 @@ class VideosClient {
 
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse = response.data;
-        List<VideosResults> listMovies =
+        List<VideosResults> data =
             jsonResponse['results'].map<VideosResults>((map) {
           return VideosResults.fromJson(map);
         }).toList();
-
-        return listMovies;
+        return data;
       } else {
         throw HttpException(
             'Code: ${response.statusCode} \nMessage: ${response.statusMessage}');

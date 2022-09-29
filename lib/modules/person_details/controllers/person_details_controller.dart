@@ -6,9 +6,8 @@ class PersonDetailsController extends GetxController {
   final PersonDetailsClient client;
   PersonDetailsController(this.client);
 
-  Future<PersonDetails> getData(personId) async {
-    client.id = personId;
-    return await client.getData();
+  Future<PersonDetails> getData(id) async {
+    return await client.getData(id);
   }
 
   String textBirthdayDeathday(String? birthday, String? deathday) {

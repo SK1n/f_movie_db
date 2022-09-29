@@ -8,18 +8,11 @@ import 'package:f_movie_db/data/model/tv_shows_season_details/tv_shows_season_de
 import 'package:flutter/material.dart';
 
 class TvShowsSeasonDetailsClient {
-  final Dio httpClient;
-  int? id;
-  int? season;
-  TvShowsSeasonDetailsClient({
-    required this.httpClient,
-    this.id,
-    this.season,
-  });
+  TvShowsSeasonDetailsClient();
 
-  Future getData() async {
+  Future getData(id, season) async {
     try {
-      var response = await httpClient.get(
+      var response = await Dio().get(
         baseURL + EndPoints(id: id, season: season).tvShowsSeasonDetails,
         queryParameters: {
           'api_key': apiKey,

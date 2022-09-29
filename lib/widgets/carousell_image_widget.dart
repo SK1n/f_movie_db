@@ -5,28 +5,24 @@ import 'package:get/get.dart';
 import 'package:octo_image/octo_image.dart';
 
 class CarousellImageWidget extends StatelessWidget {
-  final bool condition;
-  final String link;
-  const CarousellImageWidget(
-      {super.key, required this.condition, required this.link});
+  final String? link;
+  const CarousellImageWidget({super.key, required this.link});
 
   @override
   Widget build(BuildContext context) {
-    return condition
-        ? OctoImage(
-            image: CachedNetworkImageProvider('$baseImageUrl$link'),
-            placeholderBuilder: OctoPlaceholder.blurHash(
-              blurHash,
-            ),
-            height: 200,
-            width: 100,
-            errorBuilder: OctoError.icon(color: Colors.red),
-            fit: BoxFit.cover,
-          )
-        : SizedBox(
-            width: Get.width / 2,
-            height: 200,
-            child: Image.asset('assets/icons/error_white.png'),
-          );
+    return OctoImage(
+      image: CachedNetworkImageProvider(
+        link != null
+            ? '$baseImageUrl$link'
+            : 'https://developers.google.com/static/maps/documentation/streetview/images/error-image-generic.png?hl=sv',
+      ),
+      placeholderBuilder: OctoPlaceholder.blurHash(
+        blurHash,
+      ),
+      height: 200,
+      width: Get.width,
+      errorBuilder: OctoError.icon(color: Colors.red),
+      fit: BoxFit.cover,
+    );
   }
 }

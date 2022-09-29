@@ -1,9 +1,9 @@
 import 'package:f_movie_db/core/utils/end_points.dart';
-import 'package:f_movie_db/data/model/tv_shows_credits.dart/tv_shows_credits.dart';
+import 'package:f_movie_db/data/model/tv_shows_credits/tv_shows_credits.dart';
 import 'package:f_movie_db/data/model/tv_shows_details/tv_shows_details.dart';
 import 'package:f_movie_db/modules/tv_shows_details/controllers/tv_shows_credits_controller.dart';
 import 'package:f_movie_db/modules/tv_shows_details/controllers/tv_shows_item_controller.dart';
-import 'package:f_movie_db/modules/tv_shows_details/views/tv_shows_cast_list_view.dart';
+import 'package:f_movie_db/modules/tv_shows_details/views/tv_shows_credits_view.dart';
 import 'package:f_movie_db/modules/tv_shows_details/views/tv_shows_season_details_list.dart';
 import 'package:f_movie_db/widgets/app_bar/views/app_bar_view.dart';
 import 'package:f_movie_db/widgets/futuristic.dart';
@@ -16,7 +16,6 @@ class TvShowsDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int id = Get.arguments[0];
-    final TvShowsCreditsController tvShowsCreditsController = Get.find();
     final TvShowsItemController tvShowsItemController = Get.find();
     return Futuristic(
       futureBuilder: () => tvShowsItemController.getData(id),
@@ -54,19 +53,8 @@ class TvShowsDetailsPage extends StatelessWidget {
                         ParsedType.BOLD
                       ],
                     ),
-                    Futuristic(
-                      futureBuilder: () => tvShowsCreditsController.getData(id),
-                      dataBuilder: (context, snapshot) {
-                        TvShowsCredits item = snapshot.data;
-                        item.cast!.removeWhere(
-                            (element) => element.profilePath == null);
-                        item.crew!.removeWhere(
-                          (element) => element.profilePath == null,
-                        );
-                        return TvShowsCastListView(
-                          list: item.cast!,
-                        );
-                      },
+                    TvShowsCreditsView(
+                      id: id,
                     ),
                   ],
                 ),

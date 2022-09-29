@@ -7,6 +7,6 @@ class MoviesPageBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut<MoviesPageController>(
-        () => MoviesPageController(MoviesClient(httpClient: Dio())));
+        () => MoviesPageController(MoviesClient()));
   }
 }

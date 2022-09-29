@@ -1,10 +1,10 @@
-class Dates {
+class MoviesDates {
   String? maximum;
   String? minimum;
 
-  Dates({this.maximum, this.minimum});
+  MoviesDates({this.maximum, this.minimum});
 
-  Dates.fromJson(Map<String, dynamic> json) {
+  MoviesDates.fromJson(Map<String, dynamic> json) {
     maximum = json['maximum'];
     minimum = json['minimum'];
   }

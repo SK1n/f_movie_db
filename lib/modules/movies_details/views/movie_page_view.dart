@@ -2,6 +2,7 @@ import 'package:f_movie_db/core/utils/end_points.dart';
 import 'package:f_movie_db/data/model/movie_details/movie_details.dart';
 import 'package:f_movie_db/modules/movies_details/controllers/movie_item_controller.dart';
 import 'package:f_movie_db/modules/movies_details/views/movies_details_credits_view.dart';
+import 'package:f_movie_db/modules/movies_details/views/movies_images_list_view.dart';
 import 'package:f_movie_db/widgets/app_bar/views/app_bar_view.dart';
 import 'package:f_movie_db/widgets/futuristic.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class MoviePageView extends StatelessWidget {
                 releaseDate: item.releaseDate!,
                 genres: item.genres!,
                 runtime: item.runtime!,
-                endPoint: EndPoints(id: item.id).moviesVideosResults,
+                endPoint: EndPoints(id: item.id).moviesVideos,
                 posterPath: item.posterPath!,
               ),
               SliverPadding(
@@ -51,6 +52,7 @@ class MoviePageView extends StatelessWidget {
                         ],
                       ),
                       MoviesDetailsCastView(id: item.id!),
+                      MoviesImagesListView(id: item.id!),
                     ],
                   ),
                 ),

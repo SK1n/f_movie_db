@@ -1,3 +1,4 @@
+import 'package:f_movie_db/core/utils/end_points.dart';
 import 'package:f_movie_db/data/model/videos/videos_results.dart';
 import 'package:f_movie_db/data/services/videos_client.dart';
 import 'package:get/get.dart';
@@ -8,10 +9,10 @@ class MoviesVideosController extends GetxController {
   MoviesVideosController(this.client);
 
   YoutubePlayerController? videoPlayerController;
-  Future getVideo(int videoId) async {
+  Future getVideo(int id) async {
     try {
-      client.id = videoId;
-      List<VideosResults> videos = await client.getData();
+      List<VideosResults> videos =
+          await client.getData(id, EndPoints(id: id).moviesVideos);
       var video = videos.firstWhere((element) => element.type == 'Trailer');
       videoPlayerController = YoutubePlayerController(
         initialVideoId: video.key!,

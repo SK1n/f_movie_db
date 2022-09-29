@@ -29,9 +29,7 @@ class PersonDetailsPage extends StatelessWidget {
                   PersonDetails item = snapshot.data;
                   return Column(
                     children: [
-                      PersonAvatarImageWidget(
-                          condition: item.profilePath != null,
-                          link: item.profilePath ?? ''),
+                      PersonAvatarImageWidget(link: item.profilePath),
                       Text(
                         item.name ?? 'No name found!',
                         textAlign: TextAlign.center,

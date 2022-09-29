@@ -1,12 +1,12 @@
 import 'package:f_movie_db/data/model/videos/videos_results.dart';
 
-class MoviesVideos {
+class Videos {
   int? id;
   List<VideosResults>? results;
 
-  MoviesVideos({this.id, this.results});
+  Videos({this.id, this.results});
 
-  MoviesVideos.fromJson(Map<String, dynamic> json) {
+  Videos.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     if (json['results'] != null) {
       results = <VideosResults>[];

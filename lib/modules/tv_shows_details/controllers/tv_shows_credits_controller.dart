@@ -6,13 +6,7 @@ class TvShowsCreditsController extends GetxController {
   final TvShowsCreditsClient client;
   TvShowsCreditsController(this.client);
 
-  Future getData(tvShowId) async {
-    client.id = tvShowId;
-    try {
-      return await client.getData();
-    } catch (e) {
-      debugPrint(e.toString());
-      return;
-    }
+  Future getData(id) async {
+    return await client.getData(id);
   }
 }

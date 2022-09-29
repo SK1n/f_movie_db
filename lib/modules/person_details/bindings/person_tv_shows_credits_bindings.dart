@@ -8,9 +8,7 @@ class PersonTvShowsCreditsBinding implements Bindings {
   void dependencies() {
     Get.lazyPut<PersonTvShowsCreditsController>(
       () => PersonTvShowsCreditsController(
-        PersonTvShowsCreditsClient(
-          httpClient: Dio(),
-        ),
+        PersonTvShowsCreditsClient(),
       ),
     );
   }

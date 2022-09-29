@@ -8,9 +8,7 @@ class PersonDetailsBinding implements Bindings {
   void dependencies() {
     Get.lazyPut<PersonDetailsController>(
       () => PersonDetailsController(
-        PersonDetailsClient(
-          httpClient: Dio(),
-        ),
+        PersonDetailsClient(),
       ),
     );
   }

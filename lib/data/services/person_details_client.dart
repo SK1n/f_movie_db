@@ -6,13 +6,11 @@ import 'package:f_movie_db/core/utils/api_key.dart';
 import 'package:flutter/material.dart';
 
 class PersonDetailsClient {
-  final Dio httpClient;
-  int? id;
-  PersonDetailsClient({required this.httpClient, this.id});
+  PersonDetailsClient();
 
-  getData() async {
+  getData(id) async {
     try {
-      var response = await httpClient.get(
+      var response = await Dio().get(
         baseURL + EndPoints(id: id).personDetails,
         queryParameters: {
           'api_key': apiKey,
@@ -21,7 +19,6 @@ class PersonDetailsClient {
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse = response.data;
         PersonDetails item = PersonDetails.fromJson(jsonResponse);
-        debugPrint('json: $jsonResponse');
         return item;
       }
     } on DioError catch (e) {

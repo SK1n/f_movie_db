@@ -1,4 +1,4 @@
-import 'package:f_movie_db/data/model/tv_shows_results.dart';
+import 'package:f_movie_db/data/model/tv_shows/tv_shows_results.dart';
 
 class TvShows {
   int? page;

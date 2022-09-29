@@ -33,11 +33,9 @@ class AppBarController extends GetxController {
   }
 
   YoutubePlayerController? videoPlayerController;
-  Future getVideo(int videoId, String endPoint) async {
+  Future getVideo(int id, String endPoint) async {
     try {
-      client.id = videoId;
-      client.endPoint = endPoint;
-      List<VideosResults> videos = await client.getData();
+      List<VideosResults> videos = await client.getData(id, endPoint);
       var video = videos.firstWhere((element) => element.type == 'Trailer');
       videoPlayerController = YoutubePlayerController(
         initialVideoId: video.key!,

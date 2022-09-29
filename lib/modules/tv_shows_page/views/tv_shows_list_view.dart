@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:f_movie_db/core/utils/paddings.dart';
-import 'package:f_movie_db/data/model/tv_shows_results.dart';
+import 'package:f_movie_db/data/model/tv_shows/tv_shows_results.dart';
 import 'package:f_movie_db/routes/app_routes.dart';
 import 'package:f_movie_db/widgets/custom_app_bar/controllers/custom_app_bar_controller.dart';
 import 'package:f_movie_db/widgets/carousell_image_widget.dart';
@@ -46,9 +46,7 @@ class TvShowsListView extends StatelessWidget {
                     child: Stack(
                       alignment: AlignmentDirectional.bottomCenter,
                       children: [
-                        CarousellImageWidget(
-                            condition: item.posterPath != null,
-                            link: item.posterPath!),
+                        CarousellImageWidget(link: item.posterPath!),
                         Container(
                           color: Colors.black87,
                           width: Get.width / 2,

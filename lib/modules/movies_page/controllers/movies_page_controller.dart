@@ -7,21 +7,15 @@ class MoviesPageController extends GetxController {
   MoviesPageController(this.client);
 
   Future getNowPlayingData() async {
-    client.endPoint = EndPoints().moviesNowPlaying;
-    var data = await client.getData();
-    return data;
+    return await client.getData(EndPoints().moviesNowPlaying);
   }
 
   Future getUpcomingData() async {
-    client.endPoint = EndPoints().moviesUpcoming;
-    var data = await client.getData();
-    return data;
+    return await client.getData(EndPoints().moviesUpcoming);
   }
 
   Future getPopularData() async {
-    client.endPoint = EndPoints().moviesPopular;
-    var data = await client.getData();
-    return data;
+    return await client.getData(EndPoints().moviesPopular);
   }
 }
 

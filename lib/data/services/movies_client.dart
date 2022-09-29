@@ -2,24 +2,17 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:f_movie_db/core/const.dart';
-import 'package:f_movie_db/data/model/movies_results.dart';
+import 'package:f_movie_db/data/model/movies/movies_results.dart';
 import 'package:f_movie_db/core/utils/api_key.dart';
 import 'package:flutter/material.dart';
 
 class MoviesClient {
-  final Dio httpClient;
-  String? endPoint;
-  final int page;
-  MoviesClient({
-    required this.httpClient,
-    this.endPoint,
-    this.page = 1,
-  });
+  MoviesClient();
 
-  Future getData() async {
+  Future getData(endPoint, {page = 1}) async {
     try {
-      var response = await httpClient.get(
-        baseURL + endPoint!,
+      var response = await Dio().get(
+        baseURL + endPoint,
         queryParameters: {
           'api_key': apiKey,
           'page': page,

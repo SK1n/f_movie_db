@@ -1,5 +1,5 @@
-import 'package:f_movie_db/data/model/tv_shows_credits.dart/tv_shows_credits_cast.dart';
-import 'package:f_movie_db/data/model/tv_shows_credits.dart/tv_shows_credits_crew.dart';
+import 'package:f_movie_db/data/model/tv_shows_credits/tv_shows_credits_cast.dart';
+import 'package:f_movie_db/data/model/tv_shows_credits/tv_shows_credits_crew.dart';
 
 class TvShowsCredits {
   List<TvShowsCreditsCast>? cast;

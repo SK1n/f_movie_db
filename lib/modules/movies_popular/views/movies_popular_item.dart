@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:f_movie_db/data/model/movies_results.dart';
+import 'package:f_movie_db/data/model/movies/movies_results.dart';
 import 'package:f_movie_db/widgets/carousell_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,8 +20,7 @@ class MoviesPopularItem extends StatelessWidget {
         child: Stack(
           alignment: AlignmentDirectional.bottomCenter,
           children: [
-            CarousellImageWidget(
-                condition: item.posterPath != null, link: item.posterPath!),
+            CarousellImageWidget(link: item.posterPath!),
             Container(
               color: Colors.black87,
               width: Get.width / 2,

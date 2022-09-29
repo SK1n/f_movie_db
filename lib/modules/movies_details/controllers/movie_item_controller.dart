@@ -8,8 +8,7 @@ class MovieItemController extends GetxController {
   MovieItemController(this.client);
 
   Future getData(id) async {
-    client.id = id;
-    return await client.getData();
+    return await client.getData(id);
   }
 
   final _biggest = 0.0.obs;
